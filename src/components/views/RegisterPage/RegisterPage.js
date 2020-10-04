@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { loginUser } from "_actions/user_action";
+import { registerUser } from "_actions/user_action";
 
 function RegisterPage(props) {
   const dispatch = useDispatch();
@@ -24,19 +24,25 @@ function RegisterPage(props) {
 
   const onSubmit = (event) => {
     event.preventDefault();
+
+    if (Password != ConfirmPassword) {
+      return alert("비밀번호와 비밀번호 확인이 같아야 합니다.");
+    }
     console.log("Email", Email);
     console.log("pass", Password);
     let body = {
       email: Email,
       password: Password,
+      name: Name,
     };
 
     //dispatch를 이용해서 action을 날린다.
     dispatch(registerUser(body)).then((response) => {
-      if (response.payload.loginSuccess) {
-        props.history.push("/");
+      if (response.payload.registerSuccess) {
+        // 서버에서 보내주는 값
+        props.history.push("/login");
       } else {
-        alert("Error");
+        alert("Failed to sign up");
       }
     });
   };
@@ -77,7 +83,7 @@ function RegisterPage(props) {
           onChange={onChange}
         />
         <br />
-        <button type="submit">Login</button>
+        <button type="submit">Sign Up</button>
       </form>
     </div>
   );

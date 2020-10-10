@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import axios from "axios";
 import { useDispatch } from "react-redux";
 import { auth } from "_actions/user_action";
 export default function (SpecificComponent, option, adminRoute = null) {
@@ -21,11 +20,11 @@ export default function (SpecificComponent, option, adminRoute = null) {
         } else {
           //로그인한 상태
           if (!option) {
-            props.history.push("/");
+            props.history.push("/main");
           }
         }
       });
-    }, []);
+    });
 
     return <SpecificComponent />;
   }

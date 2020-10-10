@@ -26,7 +26,7 @@ function RegisterPage(props) {
   const onSubmit = (event) => {
     event.preventDefault();
 
-    if (Password != ConfirmPassword) {
+    if (Password !== ConfirmPassword) {
       return alert("비밀번호와 비밀번호 확인이 같아야 합니다.");
     }
     console.log("Email", Email);

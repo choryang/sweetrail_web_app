@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import Navbar from "components/views/NavBar/NavBar";
 
-function LandingPage(props) {
+function MainPage() {
   return (
     <>
       <Navbar />
@@ -16,10 +16,10 @@ function LandingPage(props) {
           height: "100vh",
         }}
       >
-        <h2>시작페이지</h2>
+        <h2>메인페이지</h2>
       </div>
     </>
   );
 }
 
-export default withRouter(LandingPage);
+export default withRouter(MainPage);

@@ -1,8 +1,7 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
 import Navbar from "components/views/NavBar/NavBar";
 
-function LandingPage(props) {
+function LandingPage() {
   return (
     <>
       <Navbar />
@@ -22,4 +21,4 @@ function LandingPage(props) {
   );
 }
 
-export default withRouter(LandingPage);
+export default LandingPage;

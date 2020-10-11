@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from "components/views/NavBar/NavBar";
 
 function MainPage() {
@@ -17,9 +17,10 @@ function MainPage() {
         }}
       >
         <h2>메인페이지</h2>
+        <Link to={"/mypage"}>마이페이지로 이동</Link>
       </div>
     </>
   );
 }
 
-export default withRouter(MainPage);
+export default MainPage;

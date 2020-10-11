@@ -4,6 +4,8 @@ import LandingPage from "components/views/LandingPage/LandingPage";
 import MainPage from "components/views/LandingPage/MainPage";
 import LoginPage from "components/views/LoginPage/LoginPage";
 import RegisterPage from "components/views/RegisterPage/RegisterPage";
+import MyPage from "components/views/MyPage/MyPage";
+import JourneyDetail from "components/views/MyPage/JourneyDetail";
 import Auth from "hoc/auth";
 
 function App() {
@@ -17,6 +19,12 @@ function App() {
           <Route exact path="/main" component={Auth(MainPage, true)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
+          <Route exact path="/mypage" component={Auth(MyPage, true)} />
+          <Route
+            exact
+            path="/mypage/journey"
+            component={Auth(JourneyDetail, true)}
+          />
         </Switch>
       </div>
     </Router>

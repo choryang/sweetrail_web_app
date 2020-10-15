@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { loginUser } from "_actions/user_action";
 import { withRouter } from "react-router-dom";
+import Navbar from "components/views/NavBar/NavBar";
 
 function LoginPage(props) {
   const dispatch = useDispatch();
@@ -27,15 +28,24 @@ function LoginPage(props) {
     };
 
     dispatch(loginUser(body)).then((response) => {
-      if (response.payload.loginSuccess) {
+      if (response.payload.NoExistedUser){
+        alert("존재하지 않는 사용자입니다.")
+        setEmail("");
+        setPassword("");
+      }
+      else if (response.payload.loginSuccess) {
         props.history.push("/main");
-      } else {
-        alert("Error");
+      } 
+      else {
+        alert("비밀번호가 틀렸습니다.");
+        setPassword("");
       }
     });
   };
 
   return (
+    <>
+    <Navbar />
     <div
       style={{
         display: "flex",
@@ -65,6 +75,7 @@ function LoginPage(props) {
         <button type="submit">Login</button>
       </form>
     </div>
+    </>
   );
 }
 

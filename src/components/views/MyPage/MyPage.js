@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "components/views/NavBar/NavBar";
+import MainNav from "components/views/NavBar/MainNav";
 import JourneyThumb from "components/views/MyPage/JourneyThumb";
 
 const journeys = [
@@ -15,24 +15,12 @@ const journeys = [
     id: 3,
     img: "https://i.ytimg.com/vi/La2fCRrtz5Q/maxresdefault.jpg",
   },
-  {
-    id: 4,
-    img: "https://i.ytimg.com/vi/La2fCRrtz5Q/maxresdefault.jpg",
-  },
-  {
-    id: 5,
-    img: "https://i.ytimg.com/vi/La2fCRrtz5Q/maxresdefault.jpg",
-  },
-  {
-    id: 6,
-    img: "https://i.ytimg.com/vi/La2fCRrtz5Q/maxresdefault.jpg",
-  },
 ];
 
 function MyPage() {
   return (
     <>
-      <Navbar />
+      <MainNav />
       <div
         style={{
           display: "flex",

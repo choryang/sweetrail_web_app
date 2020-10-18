@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { loginUser } from "_actions/user_action";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import Navbar from "components/views/NavBar/NavBar";
 
 function LoginPage(props) {
@@ -49,6 +49,7 @@ function LoginPage(props) {
     <div
       style={{
         display: "flex",
+        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
         width: "100%",
@@ -74,6 +75,9 @@ function LoginPage(props) {
         <br />
         <button type="submit">Login</button>
       </form>
+      <br/>
+      <span>아직 회원이 아니신가요? </span>
+      <Link to={"/register"}>SIGN UP</Link>
     </div>
     </>
   );

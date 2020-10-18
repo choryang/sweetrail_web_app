@@ -1,12 +1,12 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
-import Navbar from "components/views/NavBar/NavBar";
+import MainNav from "components/views/NavBar/MainNav";
 
 function MainPage() {
   return (
     <>
-      <Navbar />
+      <MainNav />
       <div
         style={{
           display: "flex",

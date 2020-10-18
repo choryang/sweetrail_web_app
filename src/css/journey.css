@@ -10,6 +10,14 @@
   border-radius: 8px;
 }
 
+.journeyItem {
+  width: calc((100% - 160px) / 3);
+  height: auto;
+  margin: 10px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
 .buttonContainer {
   display: inline;
 }

@@ -7,6 +7,7 @@ function NavBar(props) {
   const onClick = () => {
     axios.get("/api/user/logout").then((reponse) => {
       if (reponse.data.success) {
+        alert("로그아웃 되었습니다.");
         props.history.push("/");
       } else {
         alert("로그아웃에 실패하였습니다.");

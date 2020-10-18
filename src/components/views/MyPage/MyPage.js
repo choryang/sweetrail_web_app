@@ -1,4 +1,7 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import {useDispatch} from "react-redux";
+import {Link} from "react-router-dom";
+import { auth } from "_actions/user_action";
 import MainNav from "components/views/NavBar/MainNav";
 import JourneyThumb from "components/views/MyPage/JourneyThumb";
 
@@ -18,6 +21,17 @@ const journeys = [
 ];
 
 function MyPage() {
+
+  const [UserName, setUserName] = useState("");
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(auth()).then((response) => {
+      setUserName(response.payload.name);
+    })
+    
+  }, []);
+
   return (
     <>
       <MainNav />
@@ -32,7 +46,7 @@ function MyPage() {
         }}
       >
         <h2>마이페이지</h2>
-        <h3>유저네임</h3>
+        <h3>{UserName}</h3>
         <img
           className="profileImg"
           src="https://cdn.onlinewebfonts.com/svg/img_191958.png"
@@ -44,7 +58,10 @@ function MyPage() {
         </div>
         <div className="journeyContainer">
           {journeys.map((journey, index) => {
-            return <JourneyThumb image={journey.img} key={index} />;
+            return (
+            <Link to={"/mypage/journey"}>
+              <JourneyThumb image={journey.img} key={index} />
+            </Link>);
           })}
         </div>
       </div>

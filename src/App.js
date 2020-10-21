@@ -21,8 +21,7 @@ function App() {
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/mypage" component={Auth(MyPage, true)} />
           <Route
-            exact
-            path="/mypage/journey"
+            path="/mypage/journey/:id"
             component={Auth(JourneyDetail, true)}
           />
         </Switch>

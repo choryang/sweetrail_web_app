@@ -1,33 +1,25 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
-import {Link} from "react-router-dom";
 import { auth } from "_actions/user_action";
 import MainNav from "components/views/NavBar/MainNav";
 import JourneyThumb from "components/views/MyPage/JourneyThumb";
+import { journeyMypage } from "_actions/journey_action";
 
-const journeys = [
-  {
-    id: 1,
-    img: "https://i.ytimg.com/vi/La2fCRrtz5Q/maxresdefault.jpg",
-  },
-  {
-    id: 2,
-    img: "https://i.ytimg.com/vi/La2fCRrtz5Q/maxresdefault.jpg",
-  },
-  {
-    id: 3,
-    img: "https://i.ytimg.com/vi/La2fCRrtz5Q/maxresdefault.jpg",
-  },
-];
+
 
 function MyPage() {
 
   const [UserName, setUserName] = useState("");
+  const [MyJour, setMyJour] = useState([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(auth()).then((response) => {
       setUserName(response.payload.name);
+    });
+
+    dispatch(journeyMypage()).then((response) => {
+      setMyJour(response.payload);
     })
     
   }, []);
@@ -57,11 +49,10 @@ function MyPage() {
           <button>public</button>
         </div>
         <div className="journeyContainer">
-          {journeys.map((journey, index) => {
+          {MyJour.map((journey, index) => {
             return (
-            <Link to={"/mypage/journey"}>
-              <JourneyThumb image={journey.img} key={index} />
-            </Link>);
+              <JourneyThumb id={journey.id} name={journey.name} type={journey.type} accompany={journey.accompany} key={index}/>
+            );
           })}
         </div>
       </div>

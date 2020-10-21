@@ -4,17 +4,15 @@ import { Link } from "react-router-dom";
 import { journeyMain } from "_actions/journey_action";
 import MainNav from "components/views/NavBar/MainNav";
 import JourneyThumb from "components/views/MyPage/JourneyThumb"
-import { Row } from "antd";
 
 function MainPage() {
   const [PublicJour, setPublicJour] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(journeyMain()).then((response) => {
-      console.log(response.payload);
       setPublicJour(response.payload);
     });
-  }, [])
+  }, []);
 
   return (
     <>
@@ -30,14 +28,10 @@ function MainPage() {
       }}>
         {PublicJour.map((publicJour, index) => {
             return (
-            <JourneyThumb name={publicJour.name} type={publicJour.type} accompany={publicJour.accompany} key={index}/>
-      
+              <JourneyThumb id={publicJour.id} name={publicJour.name} type={publicJour.type} accompany={publicJour.accompany} key={index}/>
            );
           })} 
       </div>
-      
-        
-      
     </>
   );
 }

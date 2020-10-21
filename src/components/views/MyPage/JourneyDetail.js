@@ -1,10 +1,18 @@
-import React, {useEffect} from "react";
-import { withRouter } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {useDispatch} from "react-redux";
+import { withRouter, useParams } from "react-router-dom";
+import { journeyDetail } from "_actions/journey_action";
 import MainNav from "components/views/NavBar/MainNav";
 
-function MainPage() {
+function JourneyDetail() {
+
+  const { id } = useParams();
+  const [JourInfo, setJourInfo] = useState({});
+  const dispatch = useDispatch();
   useEffect(() => {
-    
+    dispatch(journeyDetail(id)).then((response) => {
+      setJourInfo(response.payload);
+    });
   }, []);
 
   return (
@@ -20,7 +28,7 @@ function MainPage() {
           height: "100vh",
         }}
       >
-        <h3>Journey name</h3>
+        <h3>{JourInfo.name}</h3>
         <img
           className="profileImg"
           src="https://cdn.onlinewebfonts.com/svg/img_191958.png"
@@ -29,17 +37,11 @@ function MainPage() {
         <h3>Path</h3>
         <h3>Summary</h3>
         <div>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          {JourInfo.summary}
         </div>
       </div>
     </>
   );
 }
 
-export default withRouter(MainPage);
+export default withRouter(JourneyDetail);

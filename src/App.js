@@ -16,14 +16,20 @@ function App() {
           renders the first one that matches the current URL. */}
         <Switch>
           <Route exact path="/" component={Auth(LandingPage, false)} />
-          <Route exact path="/main" component={Auth(MainPage, true)} />
+          {/* <Route exact path="/main" component={Auth(MainPage, true)} /> */}
+          <Route exact path="/main" component={Auth(MainPage, false)} /> {/*dev */}
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
-          <Route exact path="/mypage" component={Auth(MyPage, true)} />
-          <Route
+          {/* <Route exact path="/mypage" component={Auth(MyPage, true)} /> */}
+          <Route exact path="/mypage" component={Auth(MyPage, false)} />{/*dev */}
+          {/* <Route
             path="/mypage/journey/:id"
             component={Auth(JourneyDetail, true)}
-          />
+          /> */}
+          <Route
+            path="/mypage/journey/:id"
+            component={Auth(JourneyDetail, false)}
+          />{/*dev */}
         </Switch>
       </div>
     </Router>

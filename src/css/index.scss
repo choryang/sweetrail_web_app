@@ -1,0 +1,84 @@
+$mainblue: #5aa2f8;
+$mainwhite: #ffffff;
+$maingray: #e3eef5;
+
+.background {
+  background-image: url("../images/mainboat.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+}
+
+.common-container {
+  max-width: 1200px;
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+.form-container {
+  max-width: 450px;
+  width: calc(100% - 20px);
+  padding: 50px 20px;
+  margin: auto;
+  background-color: $mainwhite;
+  border-radius: 8px;
+  text-align: center;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.header {
+  max-width: 1200px;
+  width: 100%;
+  height: 100px;
+  padding: 30px;
+
+  img {
+    width: 100px;
+    height: 50px;
+  }
+}
+
+.main-whitebtn {
+  background-color: $mainwhite;
+  border: 1px solid $mainblue;
+  border-radius: 40px;
+  color: $mainblue;
+  padding: 5px 20px;
+  margin: 0 5px;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+}
+
+.main-bluebtn {
+  background-color: $mainblue;
+  border: 1px solid $mainblue;
+  border-radius: 40px;
+  color: $mainwhite;
+  padding: 5px 20px;
+  margin: 0 5px;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+}
+
+.main-input {
+  background-color: $maingray;
+  border: 1px solid $maingray;
+  border-radius: 40px;
+  padding: 5px 20px;
+  margin: 10px 5px;
+  font-size: 16px;
+  outline: none;
+
+  &:focus {
+    border: 1px solid $mainblue;
+  }
+}

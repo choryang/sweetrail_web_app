@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { registerUser } from "_actions/user_action";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import Navbar from "components/views/NavBar/NavBar";
 
 function RegisterPage(props) {
@@ -58,61 +58,61 @@ function RegisterPage(props) {
   };
 
   return (
-    <>
+    <div className="background">
+      <div className="common-container">
     <Navbar />
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100%",
-        height: "100vh",
-      }}
-    >
-      <form
-        style={{
-          display: "flex",
-          flexDirection: "column",
-        }}
-        onSubmit={onSubmit}
-      >
-        <label>Email</label>
-        <input type="email" name="email" value={Email} onChange={onChange} />
-        <label>Name</label>
-        <input type="text" name="name" value={Name} onChange={onChange} />
-        <label>Password</label>
+    <div className="form-container">
+      <form onSubmit={onSubmit}>
+
+        
+        <input className="main-input" type="email" name="email" placeholder="이메일" value={Email} onChange={onChange} />
+        
+        <input className="main-input" type="text" name="name" placeholder="이름" value={Name} onChange={onChange} />
+        
         <input
+          className="main-input"
           type="password"
           name="password"
+          placeholder="비밀번호"
           value={Password}
           onChange={onChange}
         />
-        <label>Confirm Password</label>
+        
         <input
+          className="main-input"
           type="password"
           name="confirmpassword"
+          placeholder="비밀번호 재입력"
           value={ConfirmPassword}
           onChange={onChange}
         />
-        <label>Life Style</label>
+        
         <input
+          className="main-input"
           type="text"
           name="lifestyle"
+          placeholder="라이프스타일"
           value={LifeStyle}
           onChange={onChange}
         />
-        <label>Journey Type</label>
+        
         <input
+          className="main-input"
           type="text"
           name="journeytype"
+          placeholder="여행 스타일"
           value={JourneyType}
           onChange={onChange}
         />
         <br />
-        <button type="submit">Sign Up</button>
+        <button className="main-bluebtn" type="submit">회원가입</button>
       </form>
+      <br/>
+          <span>계정이 있으신가요? </span>
+          <Link to={"/login"}>로그인</Link>
     </div>
-    </>
+    </div>
+    </div>
   );
 }
 

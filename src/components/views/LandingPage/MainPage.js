@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { journeyMain } from "_actions/journey_action";
 import MainNav from "components/views/NavBar/MainNav";
 import JourneyThumb from "components/views/MyPage/JourneyThumb"
+import example from "images/mainboat.png"
+import example2 from "images/mainbeach.jpg"
 
 function MainPage() {
   const [PublicJour, setPublicJour] = useState([]);
@@ -16,24 +18,55 @@ function MainPage() {
 
   return (
     <>
+    <div className="main-background">
       <MainNav />
-      <div>
-        <h2>메인페이지</h2>
-        <Link to={"/mypage"}>마이페이지로 이동</Link>
-        
+      <h1>This is the Main Screen</h1>
+    </div>
+    <div className="main-container">
+      <div className="common-catergory">추천</div>
+      <div className="main-journey">
+        <div className="main-journey item">
+          <img src={example} alt="example"/>
+        </div>
+        <div className="main-journey item">
+          <img src={example2} alt="example"/>
+        </div>
       </div>
-      <div style={{
-        display: "flex",
-        flexDirection: "row",
-      }}>
-        {PublicJour.map((publicJour, index) => {
-            return (
-              <JourneyThumb id={publicJour.id} name={publicJour.name} type={publicJour.type} accompany={publicJour.accompany} key={index}/>
-           );
-          })} 
+    </div>
+    <div className="main-container">
+      <div className="common-catergory">팔로우</div>
+      <div className="common-journey">
+        <div className="common-journey item">
+          <img src={example} alt="example"/>
+        </div>
+        <div className="common-journey item">
+          <img src={example} alt="example"/>
+        </div>
+        <div className="common-journey item">
+          <img src={example2} alt="example"/>
+        </div>
+        <div className="common-journey item">
+          <img src={example} alt="example"/>
+        </div>
+        <div className="common-journey item">
+          <img src={example2} alt="example"/>
+        </div>
+        <div className="common-journey item">
+          <img src={example} alt="example"/>
+        </div>
+        <div className="common-journey item">
+          <img src={example} alt="example"/>
+        </div>
       </div>
+    </div>
     </>
   );
 }
 
 export default MainPage;
+
+// {PublicJour.map((publicJour, index) => {
+//   return (
+//     <JourneyThumb id={publicJour.id} name={publicJour.name} type={publicJour.type} accompany={publicJour.accompany} key={index}/>
+//  );
+// })} 

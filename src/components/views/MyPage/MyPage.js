@@ -4,6 +4,8 @@ import { auth } from "_actions/user_action";
 import MainNav from "components/views/NavBar/MainNav";
 import JourneyThumb from "components/views/MyPage/JourneyThumb";
 import { journeyMypage } from "_actions/journey_action";
+import example from "images/mainboat.png"
+import example2 from "images/mainbeach.jpg"
 
 
 
@@ -27,35 +29,34 @@ function MyPage() {
   return (
     <>
       <MainNav />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-          height: "100vh",
-        }}
-      >
-        <h2>마이페이지</h2>
-        <h3>{UserName}</h3>
-        <img
-          className="profileImg"
-          src="https://cdn.onlinewebfonts.com/svg/img_191958.png"
-          alt="profile"
-        />
-        <div className="buttonContainer">
-          <button>private</button>
-          <button>public</button>
+      <div className="common-background"></div>
+      <div className="profile-img"></div>
+      <div className="main-container">
+      <div className="common-catergory">팔로우</div>
+      <div className="common-journey">
+        <div className="common-journey item">
+          <img src={example} alt="example"/>
         </div>
-        <div className="journeyContainer">
-          {MyJour.map((journey, index) => {
-            return (
-              <JourneyThumb id={journey.id} name={journey.name} type={journey.type} accompany={journey.accompany} key={index}/>
-            );
-          })}
+        <div className="common-journey item">
+          <img src={example} alt="example"/>
+        </div>
+        <div className="common-journey item">
+          <img src={example2} alt="example"/>
+        </div>
+        <div className="common-journey item">
+          <img src={example} alt="example"/>
+        </div>
+        <div className="common-journey item">
+          <img src={example2} alt="example"/>
+        </div>
+        <div className="common-journey item">
+          <img src={example} alt="example"/>
+        </div>
+        <div className="common-journey item">
+          <img src={example} alt="example"/>
         </div>
       </div>
+    </div>
     </>
   );
 }

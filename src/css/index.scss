@@ -11,7 +11,6 @@ $maingray: #e3eef5;
 }
 
 .common-container {
-  max-width: 1200px;
   width: 100%;
   height: 100vh;
   margin: 0 auto;
@@ -34,14 +33,16 @@ $maingray: #e3eef5;
 }
 
 .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   max-width: 1200px;
-  width: 100%;
-  height: 100px;
-  padding: 30px;
+  padding: 10px 10px;
+  margin: 0 auto;
 
   img {
-    width: 100px;
-    height: 50px;
+    width: 120px;
+    height: 30px;
   }
 }
 

@@ -5,7 +5,7 @@ import MainPage from "components/views/LandingPage/MainPage";
 import LoginPage from "components/views/LoginPage/LoginPage";
 import RegisterPage from "components/views/RegisterPage/RegisterPage";
 import MyPage from "components/views/MyPage/MyPage";
-import JourneyDetail from "components/views/MyPage/JourneyDetail";
+import JourneyDetail from "components/views/Journey/JourneyDetail";
 import Auth from "hoc/auth";
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
             component={Auth(JourneyDetail, true)}
           /> */}
           <Route
-            path="/mypage/journey/:id"
+            path="/journey/:id"
             component={Auth(JourneyDetail, false)}
           />{/*dev */}
         </Switch>

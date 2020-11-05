@@ -7,7 +7,7 @@ import userimg from "images/user.png";
 import "css/common.scss";
 
 function NavBar(props) {
-  const onClick = () => {
+  const onClickLogout = () => {
     axios.get("/api/user/logout").then((reponse) => {
       if (reponse.data.success) {
         alert("로그아웃 되었습니다.");
@@ -28,7 +28,7 @@ function NavBar(props) {
             <ul className="dropdown contents">
               <li><Link to={"/mypage"}><div>마이페이지</div></Link></li>
               <li><Link to={"/mypage"}><div>스크랩</div></Link></li>
-              <li><div onClick={onClick}>로그아웃</div></li>
+              <li><div onClick={onClickLogout}>로그아웃</div></li>
             </ul>
           </li>
         </ul>

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
+import { withRouter } from "react-router-dom";
 import { auth } from "_actions/user_action";
 import MainNav from "components/views/NavBar/MainNav";
 import JourneyThumb from "components/views/Journey/JourneyThumb";
@@ -9,7 +10,7 @@ import example2 from "images/mainbeach.jpg"
 
 
 
-function MyPage() {
+function MyPage(props) {
 
   // const [UserName, setUserName] = useState("");
   // const [MyJour, setMyJour] = useState([]);
@@ -25,6 +26,10 @@ function MyPage() {
   //   })
     
   // }, []);
+
+  const onClickEdit = () => {
+    props.history.push("mypage/profile-edit");
+  }
 
   const MyJour = [
     { 
@@ -90,7 +95,29 @@ function MyPage() {
     <>
       <MainNav />
       <div className="common-background">
-        <div className="profile-img"></div>
+        <div className="mypage-info">
+          <div className="mypage-profile-img"></div>
+          <div className="mypage-profile-contents">
+            <div>
+              <span className="mypage-username">Username</span>
+              <button className="mypage-profile-edit" onClick={onClickEdit}>프로필편집</button>
+            </div>
+            <div>
+              <span>팔로우</span>
+              <span>1000</span>
+              <span>팔로우</span>
+              <span>1000</span>
+            </div>
+            <div>
+              <span>Journey Type</span>
+              <span>1000</span>
+            </div>
+            <div>
+              <span>Life Style</span>
+              <span>1000</span>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="mypage-container">
       <div className="common-catergory">팔로우</div>
@@ -106,4 +133,4 @@ function MyPage() {
   );
 }
 
-export default MyPage;
+export default withRouter(MyPage);

@@ -5,6 +5,7 @@ import MainPage from "components/views/LandingPage/MainPage";
 import LoginPage from "components/views/LoginPage/LoginPage";
 import RegisterPage from "components/views/RegisterPage/RegisterPage";
 import MyPage from "components/views/MyPage/MyPage";
+import ProfileEdit from "components/views/MyPage/ProfileEdit";
 import JourneyDetail from "components/views/Journey/JourneyDetail";
 import Auth from "hoc/auth";
 
@@ -22,6 +23,7 @@ function App() {
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           {/* <Route exact path="/mypage" component={Auth(MyPage, true)} /> */}
           <Route exact path="/mypage" component={Auth(MyPage, false)} />{/*dev */}
+          <Route exact path="/mypage/profile-edit" component={Auth(ProfileEdit, false)} />{/*dev */}
           {/* <Route
             path="/mypage/journey/:id"
             component={Auth(JourneyDetail, true)}

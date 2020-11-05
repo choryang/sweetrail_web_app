@@ -80,11 +80,17 @@ function MainPage() {
     <>
     <div className="main-background">
       <MainNav />
-      <p className="main-title">This is the Main Screen</p>
-      <p className="main-article">If you want to ajdfel dad doogkde kdiae gjklsrdk.<br/>If you want to ajdfel dad doogkde kdiae gjklsrdka elfise slfidle.<br/>If you want to ajdfel dad.</p>
+      <div className="main-content">
+        <p className="main-title">This is the<br/> Main Screen</p>
+        <p className="main-article">나의 한걸음 한걸음을 기록하고,<br/>누군가와 일상, 여행, 관심을 공유하고 싶나요?<br/></p>
+        <div className="main-search">
+          <span><i className="fa fa-search"></i></span>
+          <input type="text" placeholder="search Post/User"/>
+        </div>
+      </div>
     </div>
     <div className="main-container">
-      <div className="common-catergory">추천</div>
+      <div className="common-catergory">JOURNEY FOR YOU</div>
       <div className="main-journey">
         <div className="main-journey item">
           <img src={example} alt="example"/>
@@ -95,7 +101,7 @@ function MainPage() {
       </div>
     </div>
     <div className="main-container">
-      <div className="common-catergory">팔로우</div>
+      <div className="common-catergory">FRIEND'S JOURNEY</div>
       <div className="common-journey">
         {publicJour.map((journey, index) => {
           return (

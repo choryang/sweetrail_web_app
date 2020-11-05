@@ -145,12 +145,13 @@ function JourneyDetail() {
   return (
     <>
       <MainNav />
-      <div className="journey-detail-container">
+     
         <div className="journey-detail-title">
           <img src={JourInfo.img} alt="title" />
           <p className="journey-detail-name">{JourInfo.name}</p>
           <p className="journey-detail-username">Created by {JourInfo.username}</p>
         </div>
+        <div className="journey-detail-container">
         <div className="journey-detail-content">
           <h1>Path</h1>
           <div className="journey-detail-path-box">

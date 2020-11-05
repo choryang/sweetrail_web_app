@@ -4,26 +4,59 @@ $maingray: #e3eef5;
 $subgray: #999999;
 
 .main-background {
-  background-image: url("../images/mainboat.png");
   background-repeat: no-repeat;
   background-size: cover;
-  width: 100%;
-  height: 600px;
+  height: 800px;
   margin: 0 auto;
+  background: linear-gradient(
+      180deg,
+      #000000 0%,
+      rgba(255, 255, 255, 0) 99.99%,
+      #000000 100%
+    ),
+    url("../images/plane.jpg");
+  mix-blend-mode: multiply;
 
-  .main-title {
-    font-size: 64px;
-    font-weight: bold;
-    max-width: 1200px;
-    padding: 100px 50px 0;
-    margin: 0 auto;
-  }
+  .main-content {
+    margin: 15% 15%;
 
-  .main-article {
-    font-size: 24px;
-    max-width: 1200px;
-    padding: 0 60px;
-    margin: 0 auto;
+    .main-title {
+      font-size: 64px;
+      font-weight: bold;
+      color: $mainwhite;
+      max-width: 1200px;
+      margin: 0;
+      line-height: 1;
+    }
+
+    .main-article {
+      font-size: 24px;
+      max-width: 1200px;
+      color: $mainwhite;
+      padding: 0 10px;
+      margin-top: 10px;
+    }
+
+    .main-search {
+      max-width: 700px;
+      height: 40px;
+      padding: 0 20px;
+      font-size: 18px;
+      background-color: $mainwhite;
+      border-radius: 30px;
+      margin-top: 20px;
+
+      input {
+        width: 70%;
+        height: 100%;
+        border: none;
+        margin: 0 20px;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
   }
 }
 
@@ -36,14 +69,31 @@ $subgray: #999999;
   margin: 0 auto;
   position: relative;
 
-  .profile-img {
+  .mypage-info {
+    display: flex;
+    flex-direction: row;
+
+    .mypage-profile-contents {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .mypage-profile-img {
     border-radius: 50%;
     width: 200px;
     height: 200px;
     background-color: $maingray;
-    position: absolute;
-    left: 20%;
-    bottom: -20%;
+  }
+
+  .mypage-username {
+    font-size: 36px;
+    font-weight: bold;
+  }
+
+  .mypage-profile-edit {
+    font-size: 24px;
+    font-weight: bold;
   }
 }
 
@@ -99,7 +149,9 @@ $subgray: #999999;
 }
 
 .common-catergory {
-  width: 150px;
+  font-size: 24px;
+  font-weight: bold;
+  width: 300px;
   border-bottom: 1px solid #000000;
   margin-left: 10px;
 }
@@ -128,24 +180,22 @@ $subgray: #999999;
   .contents {
     list-style: none;
     position: absolute;
-    right: -50px;
-    top: 50px;
+    left: -70px;
+    top: 55px;
     display: none;
     background-color: $mainwhite;
     padding: 10px 5px;
-    border: 1px solid $subgray;
+    border: 1px solid #000000;
     border-radius: 8px;
-    box-shadow: 3px 5px 5px $subgray;
   }
 
   &:hover .contents {
     display: block;
 
     li div {
-      width: 200px;
-      padding: 10px 5px;
+      width: 150px;
+      padding: 5px 5px;
       color: $subgray;
-      border-bottom: 1px solid $subgray;
       cursor: pointer;
     }
   }
@@ -172,34 +222,34 @@ $subgray: #999999;
       font-size: 24px;
     }
   }
+}
 
-  .journey-detail-title {
+.journey-detail-title {
+  width: 100%;
+  position: relative;
+  color: $mainwhite;
+
+  img {
     width: 100%;
-    position: relative;
-    color: $mainwhite;
+    height: 400px;
+    vertical-align: middle;
+    border-radius: 0 0 40px 40px;
+  }
 
-    img {
-      width: 100%;
-      height: 400px;
-      vertical-align: middle;
-      border-radius: 0 0 40px 40px;
-    }
+  .journey-detail-name {
+    font-size: 64px;
+    font-weight: bold;
+    margin-bottom: 0;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+  }
 
-    .journey-detail-name {
-      font-size: 64px;
-      font-weight: bold;
-      margin-bottom: 0;
-      position: absolute;
-      top: 50%;
-      left: 5%;
-    }
-
-    .journey-detail-username {
-      font-size: 24px;
-      position: absolute;
-      top: 70%;
-      left: 5%;
-    }
+  .journey-detail-username {
+    font-size: 24px;
+    position: absolute;
+    top: 70%;
+    left: 5%;
   }
 }
 

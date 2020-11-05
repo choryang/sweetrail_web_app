@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import Modal from 'react-modal';
 import {useDispatch} from "react-redux";
 import { withRouter } from "react-router-dom";
 import { auth } from "_actions/user_action";
@@ -7,6 +8,7 @@ import JourneyThumb from "components/views/Journey/JourneyThumb";
 import { journeyMypage } from "_actions/journey_action";
 import example from "images/mainboat.png"
 import example2 from "images/mainbeach.jpg"
+import userimg from "images/user.png";
 
 
 
@@ -27,8 +29,18 @@ function MyPage(props) {
     
   // }, []);
 
+  const [FollowVisible, setFollowVisible] = useState(false);
+
   const onClickEdit = () => {
     props.history.push("mypage/profile-edit");
+  }
+
+  const openFollowModal = () => {
+    setFollowVisible(true);
+  }
+
+  const closeFollowModal = () => {
+    setFollowVisible(false);
   }
 
   const MyJour = [
@@ -103,7 +115,108 @@ function MyPage(props) {
               <button className="mypage-profile-edit" onClick={onClickEdit}>프로필편집</button>
             </div>
             <div>
-              <span>팔로우</span>
+              <span onClick={openFollowModal}>팔로우</span>
+              <Modal
+                isOpen={FollowVisible}
+                //onAfterOpen={afterOpenModal}
+                onRequestClose={closeFollowModal}
+                className="modal-follow"
+                overlayClassName="modal-follow-overlay"
+                contentLabel="Example Modal"
+              >
+                <div className="modal-follow-header">
+                  <span className="modal-follow-title">팔로우</span>
+                  <span className="modal-follow-close" onClick={closeFollowModal}><i class="fa fa-times" aria-hidden="true"></i></span>
+                </div>
+                
+                <div className="modal-follow-container">
+                  <div className="modal-follow-item">
+                    <div className="modal-follow-user">
+                      <img className="follow-profile-img" src={userimg} alt="userprofile"/>
+                      <div className="follow-name">name</div>
+                    </div>
+                    <button>팔로우</button>
+                  </div>
+                  <div className="modal-follow-item">
+                    <div className="modal-follow-user">
+                      <img className="follow-profile-img" src={userimg} alt="userprofile"/>
+                      <div className="follow-name">name</div>
+                    </div>
+                    <button>팔로우</button>
+                  </div>
+                  <div className="modal-follow-item">
+                    <div className="modal-follow-user">
+                      <img className="follow-profile-img" src={userimg} alt="userprofile"/>
+                      <div className="follow-name">name</div>
+                    </div>
+                    <button>팔로우</button>
+                  </div>
+                  <div className="modal-follow-item">
+                    <div className="modal-follow-user">
+                      <img className="follow-profile-img" src={userimg} alt="userprofile"/>
+                      <div className="follow-name">name</div>
+                    </div>
+                    <button>팔로우</button>
+                  </div>
+                  <div className="modal-follow-item">
+                    <div className="modal-follow-user">
+                      <img className="follow-profile-img" src={userimg} alt="userprofile"/>
+                      <div className="follow-name">name</div>
+                    </div>
+                    <button>팔로우</button>
+                  </div>
+                  <div className="modal-follow-item">
+                    <div className="modal-follow-user">
+                      <img className="follow-profile-img" src={userimg} alt="userprofile"/>
+                      <div className="follow-name">name</div>
+                    </div>
+                    <button>팔로우</button>
+                  </div>
+                  <div className="modal-follow-item">
+                    <div className="modal-follow-user">
+                      <img className="follow-profile-img" src={userimg} alt="userprofile"/>
+                      <div className="follow-name">name</div>
+                    </div>
+                    <button>팔로우</button>
+                  </div>
+                  <div className="modal-follow-item">
+                    <div className="modal-follow-user">
+                      <img className="follow-profile-img" src={userimg} alt="userprofile"/>
+                      <div className="follow-name">name</div>
+                    </div>
+                    <button>팔로우</button>
+                  </div>
+                  <div className="modal-follow-item">
+                    <div className="modal-follow-user">
+                      <img className="follow-profile-img" src={userimg} alt="userprofile"/>
+                      <div className="follow-name">name</div>
+                    </div>
+                    <button>팔로우</button>
+                  </div>
+                  <div className="modal-follow-item">
+                    <div className="modal-follow-user">
+                      <img className="follow-profile-img" src={userimg} alt="userprofile"/>
+                      <div className="follow-name">name</div>
+                    </div>
+                    <button>팔로우</button>
+                  </div>
+                  <div className="modal-follow-item">
+                    <div className="modal-follow-user">
+                      <img className="follow-profile-img" src={userimg} alt="userprofile"/>
+                      <div className="follow-name">name</div>
+                    </div>
+                    <button>팔로우</button>
+                  </div>
+                  <div className="modal-follow-item">
+                    <div className="modal-follow-user">
+                      <img className="follow-profile-img" src={userimg} alt="userprofile"/>
+                      <div className="follow-name">name</div>
+                    </div>
+                    <button>팔로우</button>
+                  </div>
+                  
+                </div>
+              </Modal>
               <span>1000</span>
               <span>팔로우</span>
               <span>1000</span>
@@ -134,3 +247,5 @@ function MyPage(props) {
 }
 
 export default withRouter(MyPage);
+
+ 

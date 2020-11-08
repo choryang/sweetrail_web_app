@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import GoogleMapReact from 'google-map-react';
 import Carousel from 'nuka-carousel';
 import {useDispatch} from "react-redux";
 import { withRouter, useParams } from "react-router-dom";
@@ -18,6 +19,22 @@ function JourneyDetail() {
   //   });
   // }, []);
 
+  const AnyReactComponent = ({ text }) => {
+    return (
+      
+        <div>{text}</div>
+      
+    );
+  };
+  
+    const defaultProps = {
+      center: {
+        lat: 37.531706,
+        lng: 127.066676
+      },
+      zoom: 11
+    };
+
   const JourInfo = {
     id: 1,
     name: "Still Stand Tall1",
@@ -25,7 +42,8 @@ function JourneyDetail() {
     category: "geek",
     accompany: "",
     img: "https://sothebysrealty.gr/wp-content/uploads/2016/11/Santorini-sunset-at-dawn-Greece-Sothebys-International-Realty.jpg",
-    summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Pellentesque pharetra, urna varius semper fermentum, nulla nulla venenatis ante, ac gravida augue metus vitae nunc. Donec arcu sem, porta eget diam iaculis, pla cerat molestie odio. Mauris suscipit condimentum quam a eleifend. Fusce aliquet, massa ut euismod tincidunt, magna nibh m",
+    summary: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pharetra nisl, scelerisque commodo nisl, in. Fusce ac ut lacus aenean a scelerisque. Pellentesque et elit cursus elementum amet. Augue ornare in in imperdiet ac lacus. Magna feugiat ornare tristique nisi quis auctor ullamcorper. Quam faucibus massa diam leo nibh eleifend eleifend id. Sollicitudin netus lobortis imperdiet nunc venenatis laoreet suspendisse diam. Felis elit et nibh habitant. Sit ante lorem sit justo enim, a lorem adipiscing quis.
+    Ac vel ipsum tempus hendrerit vitae diam. Eget quam nam amet, dictumst vel euismod lacus dolor. Eget enim massa sagittis, massa. A sem sapien vulputate amet diam diam orci lobortis pulvinar. Ut sed est aliquam amet elementum pellentesque felis pharetra. Et massa tristique quis amet leo.`,
   }
 
   const places = [
@@ -152,34 +170,55 @@ function JourneyDetail() {
           <p className="journey-detail-username">Created by {JourInfo.username}</p>
         </div>
         <div className="journey-detail-container">
-        <div className="journey-detail-content">
-          <h1>Path</h1>
-          <div className="journey-detail-path-box">
-            {places.map((place) => {
-              return(
-              <div className="journey-detail-path-item">
-                <img className="journey-detail-path-pin" src={pin} alt="pin" />
-                <div className="journey-detail-path-line"></div>
-                <p>{place.name}</p>
-              </div>
-              );
-            })}
+          <div className="journey-detail-catergory common-gray-box ">
+            <p>
+              <span>Category: </span>
+              <span>카테고리</span>
+            </p>
+            <span>여행기간: 30일</span>
+          </div>
+          <div className="journey-detail-contents">
+            <div className="journey-detail-path">
+                <div className="journey-detail-map common-gray-box">
+                  <GoogleMapReact
+                    bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY}}
+                    defaultCenter={defaultProps.center}
+                    defaultZoom={defaultProps.zoom}
+                  >
+                    <AnyReactComponent
+                      lat={37.531706}
+                      lng={127.066676}
+                      text="My Marker"
+                    />
+                  </GoogleMapReact>
+                </div>
+                <div className="journey-detail-path-item-box">
+                {places.map((place) => {
+                  return(
+                  <div className="journey-detail-path-item">
+                    <img className="journey-detail-path-pin" src={pin} alt="pin" />
+                    <p>{place.name}</p>
+                    <div className="journey-detail-path-line"></div>
+                  </div>
+                  );
+                })}
+                </div>
+                <button>경로 자세히 보기</button>
+            </div>
+            <div className="journey-detail-info common-gray-box">
+              <Carousel className="journey-detail-carousel" wrapAround="true" heightMode="first" enableKeyboardControls="true" width="100%">
+                {images.map((image) => {
+                  return (
+                    <img src={image.path} alt="slide"/>
+                  );
+                })}
+              </Carousel>
+              <p className="journey-detail-summary">
+                {JourInfo.summary}
+              </p>
+            </div>
           </div>
         </div>
-        <div className="journey-detail-content">
-          <h1>Summary</h1>
-          <Carousel className="journey-detail-carousel" wrapAround="true" heightMode="first" enableKeyboardControls="true" width="80%">
-            {images.map((image) => {
-              return (
-                <img src={image.path} alt="slide"/>
-              );
-            })}
-          </Carousel>
-          <p className="journey-detail-summary">
-            {JourInfo.summary}
-          </p>
-        </div>
-      </div>
     </>
   );
 }

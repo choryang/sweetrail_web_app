@@ -7,8 +7,9 @@ import { journeyDetail } from "_actions/journey_action";
 import MainNav from "components/views/NavBar/MainNav";
 import userimg from "images/user.png";
 import pin from "images/pin.png";
+import "css/journey.scss";
 
-function JourneyDetail() {
+function JourneyDetail(props) {
 
   // const { id } = useParams();
   // const [JourInfo, setJourInfo] = useState({});
@@ -18,6 +19,13 @@ function JourneyDetail() {
   //     setJourInfo(response.payload);
   //   });
   // }, []);
+
+  const journey_id = 1;
+  const path_id = 1;
+
+  const onClickGoPath = () => {
+    props.history.push(`/path/1`);
+  }
 
   const AnyReactComponent = ({ text }) => {
     return (
@@ -195,15 +203,15 @@ function JourneyDetail() {
                 <div className="journey-detail-path-item-box">
                 {places.map((place) => {
                   return(
-                  <div className="journey-detail-path-item">
-                    <img className="journey-detail-path-pin" src={pin} alt="pin" />
+                  <div className="common-path-item">
+                    <img className="common-path-pin" src={pin} alt="pin" />
                     <p>{place.name}</p>
-                    <div className="journey-detail-path-line"></div>
+                    <div className="common-path-line"></div>
                   </div>
                   );
                 })}
                 </div>
-                <button>경로 자세히 보기</button>
+                <button onClick={onClickGoPath}>경로 자세히 보기</button>
             </div>
             <div className="journey-detail-info common-gray-box">
               <Carousel className="journey-detail-carousel" wrapAround="true" heightMode="first" enableKeyboardControls="true" width="100%">

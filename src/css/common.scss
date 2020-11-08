@@ -208,135 +208,31 @@ $subgray: #999999;
   border-radius: 8px;
 }
 
-.journey-detail-container {
+.common-path-item {
   display: flex;
-  flex-direction: column;
-  max-width: 900px;
-  margin: 80px auto 0;
-
-  .journey-detail-contents {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    margin: 10px auto;
-
-    .journey-detail-path {
-      display: flex;
-      flex-direction: column;
-      width: calc((100% - 10px) / 3);
-      padding: 0;
-      margin-right: 10px;
-
-      .journey-detail-map {
-        width: 100%;
-        height: 300px;
-        padding: 5px;
-        margin-bottom: 10px;
-      }
-
-      .journey-detail-path-item-box {
-        display: flex;
-        flex-direction: column;
-        height: 600px;
-        overflow: auto;
-        border: 1px solid $subgray;
-        border-radius: 8px 8px 0 0;
-
-        .journey-detail-path-item {
-          display: flex;
-          align-items: center;
-          margin: 0 20px;
-          position: relative;
-
-          p {
-            font-weight: bold;
-            margin: 0 20px;
-          }
-
-          .journey-detail-path-pin {
-            width: 35px;
-            height: 50px;
-            margin: 10px 0;
-          }
-
-          .journey-detail-path-line {
-            width: 1px;
-            height: 60px;
-            border-left: 5px dotted $subgray;
-            position: absolute;
-            top: 5px;
-            left: 16px;
-            z-index: -1;
-          }
-        }
-      }
-
-      button {
-        width: 100%;
-        padding: 10px;
-        color: $mainwhite;
-        font-weight: bold;
-        background-color: $mainblue;
-        border-radius: 0 0 8px 8px;
-        border: none;
-        &:focus,
-        &:hover {
-          outline: none;
-          cursor: pointer;
-        }
-      }
-    }
-
-    .journey-detail-info {
-      display: flex;
-      flex-direction: column;
-      width: calc(((100% - 10px) / 3) * 2);
-      padding: 20px;
-      overflow: auto;
-
-      .journey-detail-carousel {
-        margin: 0 auto;
-
-        img {
-          border-radius: 8px;
-        }
-      }
-
-      .journey-detail-summary {
-        margin-top: 30px;
-        padding-left: 10px;
-        font-size: 16px;
-      }
-    }
-  }
-}
-
-.journey-detail-title {
-  width: 100%;
+  align-items: center;
+  margin: 0 20px;
   position: relative;
-  color: $mainwhite;
 
-  img {
-    width: 100%;
-    height: 400px;
-    vertical-align: middle;
-    border-radius: 0 0 40px 40px;
-  }
-
-  .journey-detail-name {
-    font-size: 64px;
+  p {
     font-weight: bold;
-    margin-bottom: 0;
-    position: absolute;
-    top: 50%;
-    left: 5%;
+    margin: 0 20px;
   }
 
-  .journey-detail-username {
-    font-size: 24px;
+  .common-path-pin {
+    width: 35px;
+    height: 50px;
+    margin: 10px 0;
+  }
+
+  .common-path-line {
+    width: 1px;
+    height: 60px;
+    border-left: 5px dotted $subgray;
     position: absolute;
-    top: 70%;
-    left: 5%;
+    top: 5px;
+    left: 16px;
+    z-index: -1;
   }
 }
 

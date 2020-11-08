@@ -1,0 +1,108 @@
+$mainblue: #5aa2f8;
+$mainwhite: #ffffff;
+$maingray: #e3eef5;
+$subgray: #999999;
+
+.journey-detail-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  margin: 80px auto 0;
+
+  .journey-detail-contents {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 10px auto;
+
+    .journey-detail-path {
+      display: flex;
+      flex-direction: column;
+      width: calc((100% - 10px) / 3);
+      padding: 0;
+      margin-right: 10px;
+
+      .journey-detail-map {
+        width: 100%;
+        height: 300px;
+        padding: 5px;
+        margin-bottom: 10px;
+      }
+
+      .journey-detail-path-item-box {
+        display: flex;
+        flex-direction: column;
+        height: 600px;
+        overflow: auto;
+        border: 1px solid $subgray;
+        border-radius: 8px 8px 0 0;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        color: $mainwhite;
+        font-weight: bold;
+        background-color: $mainblue;
+        border-radius: 0 0 8px 8px;
+        border: none;
+        &:focus,
+        &:hover {
+          outline: none;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .journey-detail-info {
+      display: flex;
+      flex-direction: column;
+      width: calc(((100% - 10px) / 3) * 2);
+      padding: 20px;
+      overflow: auto;
+
+      .journey-detail-carousel {
+        margin: 0 auto;
+
+        img {
+          border-radius: 8px;
+        }
+      }
+
+      .journey-detail-summary {
+        margin-top: 30px;
+        padding-left: 10px;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.journey-detail-title {
+  width: 100%;
+  position: relative;
+  color: $mainwhite;
+
+  img {
+    width: 100%;
+    height: 400px;
+    vertical-align: middle;
+    border-radius: 0 0 40px 40px;
+  }
+
+  .journey-detail-name {
+    font-size: 64px;
+    font-weight: bold;
+    margin-bottom: 0;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+  }
+
+  .journey-detail-username {
+    font-size: 24px;
+    position: absolute;
+    top: 70%;
+    left: 5%;
+  }
+}

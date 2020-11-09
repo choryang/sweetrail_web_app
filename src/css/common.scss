@@ -6,7 +6,7 @@ $subgray: #999999;
 .main-background {
   background-repeat: no-repeat;
   background-size: cover;
-  height: 800px;
+  height: 700px;
   margin: 0 auto;
   background: linear-gradient(
       180deg,
@@ -18,7 +18,7 @@ $subgray: #999999;
   mix-blend-mode: multiply;
 
   .main-content {
-    margin: 15% 15%;
+    margin: 10% 15%;
 
     .main-title {
       font-size: 64px;
@@ -60,45 +60,81 @@ $subgray: #999999;
   }
 }
 
-.common-background {
-  background-image: url("../images/mainboat.png");
-  background-repeat: no-repeat;
-  background-size: cover;
+.mypage-info {
+  max-width: 1200px;
   width: 100%;
-  height: 400px;
-  margin: 0 auto;
-  position: relative;
+  margin: 100px auto 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  //justify-content: center;
 
-  .mypage-info {
+  .mypage-profile-contents {
     display: flex;
-    flex-direction: row;
-
-    .mypage-profile-contents {
-      display: flex;
-      flex-direction: column;
-    }
+    flex-direction: column;
+    font-size: 16px;
+    font-weight: bold;
   }
+}
 
-  .mypage-profile-img {
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    background-color: $maingray;
-  }
+.mypage-profile-img {
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  background-color: $maingray;
+  margin-right: 100px;
+}
+
+.mypage-profile-first {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 
   .mypage-username {
     font-size: 36px;
     font-weight: bold;
   }
 
-  .mypage-profile-edit {
-    font-size: 24px;
+  .mypage-profile-edit-btn {
+    height: 40px;
+    font-size: 16px;
     font-weight: bold;
+    background-color: $mainwhite;
+    color: #000000;
+    border-radius: 8px;
+    border: 1px solid #000000;
+    padding: 0 15px;
+    margin: 5px 15px 0;
+    outline: none;
+    cursor: pointer;
   }
 }
 
+.mypage-profile-others {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+
+  .mypage-profile-text {
+    display: inline-block;
+    margin: 0 5px;
+
+    &.margin {
+      margin-right: 40px;
+    }
+
+    &.follow {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}
+
+//others
+
 .common-header-container {
   background-color: $mainwhite;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .common-header {
@@ -166,36 +202,6 @@ $subgray: #999999;
     img {
       width: 100%;
       border-radius: 8px;
-      cursor: pointer;
-    }
-  }
-}
-
-.dropdown {
-  list-style: none;
-  position: relative;
-  margin: 0;
-
-  .contents {
-    list-style: none;
-    position: absolute;
-    left: -70px;
-    top: 55px;
-    display: none;
-    background-color: $mainwhite;
-    padding: 10px 5px;
-    border: 1px solid #000000;
-    border-radius: 8px;
-  }
-
-  &:hover .contents {
-    display: block;
-    z-index: 5;
-
-    li div {
-      width: 150px;
-      padding: 5px 5px;
-      color: $subgray;
       cursor: pointer;
     }
   }

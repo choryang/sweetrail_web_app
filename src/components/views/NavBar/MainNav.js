@@ -1,12 +1,36 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
+import Modal from 'react-modal';
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import logo from "images/logo.png";
 import userimg from "images/user.png";
 import "css/common.scss";
+import "css/modal.scss";
 
-function NavBar(props) {
+function MainNav(props) {
+
+  const [ProfileVisible, setProfileVisible] = useState(false);
+
+  // const openProfileModal = () => {
+  //   setProfileVisible(true);
+  // }
+
+  const closeProfileModal = () => {
+    setProfileVisible(false);
+  }
+
+  const toggleProfileModal = () => {
+    if (ProfileVisible === true) {
+      setProfileVisible(false);
+    }
+
+    else {
+      setProfileVisible(true);
+    }
+  }
+
+
   const onClickLogout = () => {
     axios.get("/api/user/logout").then((reponse) => {
       if (reponse.data.success) {
@@ -22,19 +46,24 @@ function NavBar(props) {
     <div className="common-header-container">
       <div className="common-header">
         <Link to={"/main"}><img className="logo" src={logo} alt="logo"/></Link>
-        <ul className="dropdown">
-          <li>
-            <img className="user" src={userimg} alt="userprofile"/>
-            <ul className="dropdown contents">
-              <li><Link to={"/mypage"}><div>마이페이지</div></Link></li>
-              <li><Link to={"/mypage"}><div>스크랩</div></Link></li>
-              <li><div onClick={onClickLogout}>로그아웃</div></li>
-            </ul>
-          </li>
-        </ul>
+        <img className="user" src={userimg} alt="userprofile" onClick={toggleProfileModal}/>
       </div>
+        <Modal
+          isOpen={ProfileVisible}
+          //onAfterOpen={afterOpenModal}
+          onRequestClose={closeProfileModal}
+          className="modal-profile"
+          overlayClassName="modal-profile-overlay"
+          //contentLabel="Example Modal"
+        >
+          <ul className="modal-profile-contents">
+            <li><Link to={"/mypage"}><div>마이페이지</div></Link></li>
+            <li><Link to={"/mypage"}><div>스크랩</div></Link></li>
+            <li><div onClick={onClickLogout}>로그아웃</div></li>
+          </ul>
+        </Modal>
     </div>
   );
 }
 
-export default withRouter(NavBar);
+export default withRouter(MainNav);

@@ -106,16 +106,15 @@ function MyPage(props) {
   return (
     <>
       <MainNav />
-      <div className="common-background">
         <div className="mypage-info">
           <div className="mypage-profile-img"></div>
           <div className="mypage-profile-contents">
-            <div>
+            <div className="mypage-profile-first">
               <span className="mypage-username">Username</span>
-              <button className="mypage-profile-edit" onClick={onClickEdit}>프로필편집</button>
+              <button className="mypage-profile-edit-btn" onClick={onClickEdit}>프로필편집</button>
             </div>
-            <div>
-              <span onClick={openFollowModal}>팔로우</span>
+            <div className="mypage-profile-others">
+              <span className="mypage-profile-text follow" onClick={openFollowModal}>팔로워</span>
               <Modal
                 isOpen={FollowVisible}
                 //onAfterOpen={afterOpenModal}
@@ -137,101 +136,23 @@ function MyPage(props) {
                     </div>
                     <button>팔로우</button>
                   </div>
-                  <div className="modal-follow-item">
-                    <div className="modal-follow-user">
-                      <img className="follow-profile-img" src={userimg} alt="userprofile"/>
-                      <div className="follow-name">name</div>
-                    </div>
-                    <button>팔로우</button>
-                  </div>
-                  <div className="modal-follow-item">
-                    <div className="modal-follow-user">
-                      <img className="follow-profile-img" src={userimg} alt="userprofile"/>
-                      <div className="follow-name">name</div>
-                    </div>
-                    <button>팔로우</button>
-                  </div>
-                  <div className="modal-follow-item">
-                    <div className="modal-follow-user">
-                      <img className="follow-profile-img" src={userimg} alt="userprofile"/>
-                      <div className="follow-name">name</div>
-                    </div>
-                    <button>팔로우</button>
-                  </div>
-                  <div className="modal-follow-item">
-                    <div className="modal-follow-user">
-                      <img className="follow-profile-img" src={userimg} alt="userprofile"/>
-                      <div className="follow-name">name</div>
-                    </div>
-                    <button>팔로우</button>
-                  </div>
-                  <div className="modal-follow-item">
-                    <div className="modal-follow-user">
-                      <img className="follow-profile-img" src={userimg} alt="userprofile"/>
-                      <div className="follow-name">name</div>
-                    </div>
-                    <button>팔로우</button>
-                  </div>
-                  <div className="modal-follow-item">
-                    <div className="modal-follow-user">
-                      <img className="follow-profile-img" src={userimg} alt="userprofile"/>
-                      <div className="follow-name">name</div>
-                    </div>
-                    <button>팔로우</button>
-                  </div>
-                  <div className="modal-follow-item">
-                    <div className="modal-follow-user">
-                      <img className="follow-profile-img" src={userimg} alt="userprofile"/>
-                      <div className="follow-name">name</div>
-                    </div>
-                    <button>팔로우</button>
-                  </div>
-                  <div className="modal-follow-item">
-                    <div className="modal-follow-user">
-                      <img className="follow-profile-img" src={userimg} alt="userprofile"/>
-                      <div className="follow-name">name</div>
-                    </div>
-                    <button>팔로우</button>
-                  </div>
-                  <div className="modal-follow-item">
-                    <div className="modal-follow-user">
-                      <img className="follow-profile-img" src={userimg} alt="userprofile"/>
-                      <div className="follow-name">name</div>
-                    </div>
-                    <button>팔로우</button>
-                  </div>
-                  <div className="modal-follow-item">
-                    <div className="modal-follow-user">
-                      <img className="follow-profile-img" src={userimg} alt="userprofile"/>
-                      <div className="follow-name">name</div>
-                    </div>
-                    <button>팔로우</button>
-                  </div>
-                  <div className="modal-follow-item">
-                    <div className="modal-follow-user">
-                      <img className="follow-profile-img" src={userimg} alt="userprofile"/>
-                      <div className="follow-name">name</div>
-                    </div>
-                    <button>팔로우</button>
-                  </div>
-                  
                 </div>
               </Modal>
-              <span>1000</span>
-              <span>팔로우</span>
-              <span>1000</span>
+              <span className="mypage-profile-text margin">1000</span>
+              <span className="mypage-profile-text follow" onClick={openFollowModal}>팔로잉</span>
+              <span className="mypage-profile-text">1000</span>
             </div>
-            <div>
-              <span>Journey Type</span>
-              <span>1000</span>
+            <div className="mypage-profile-others">
+              <span className="mypage-profile-text">Journey Type</span>
+              <span>geek</span>
             </div>
-            <div>
-              <span>Life Style</span>
-              <span>1000</span>
+            <div className="mypage-profile-others">
+              <span className="mypage-profile-text">Life Style</span>
+              <span>cafe</span>
             </div>
           </div>
         </div>
-      </div>
+      
       <div className="mypage-container">
       <div className="common-catergory">팔로우</div>
       <div className="common-journey">

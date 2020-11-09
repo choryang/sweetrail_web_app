@@ -1,0 +1,32 @@
+$mainwhite: #ffffff;
+$subgray: #999999;
+
+.modal-profile {
+  position: absolute;
+  top: 65px;
+  width: 100%;
+  max-width: 1400px;
+  margin-right: 10px;
+
+  .modal-profile-contents {
+    list-style: none;
+    width: 150px;
+    float: right;
+    background-color: $mainwhite;
+    border-radius: 8px;
+    border: 1px solid $subgray;
+    padding: 0 10px;
+    margin: 0;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    li div {
+      color: $subgray;
+      cursor: pointer;
+      margin: 5px 0;
+    }
+  }
+}
+
+.modal-profile-overlay {
+  background: none;
+}

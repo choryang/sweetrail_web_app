@@ -1,14 +1,10 @@
 import React, {useEffect, useState} from "react";
 import Modal from 'react-modal';
-import {useDispatch} from "react-redux";
 import { withRouter } from "react-router-dom";
-import { auth } from "_actions/user_action";
 import MainNav from "components/views/NavBar/MainNav";
 import JourneyThumb from "components/views/Journey/JourneyThumb";
-import { journeyMypage } from "_actions/journey_action";
-import example from "images/mainboat.png"
-import example2 from "images/mainbeach.jpg"
 import userimg from "images/user.png";
+import {FaTimes} from "react-icons/fa"
 
 
 
@@ -125,7 +121,7 @@ function MyPage(props) {
               >
                 <div className="modal-follow-header">
                   <span className="modal-follow-title">팔로우</span>
-                  <span className="modal-follow-close" onClick={closeFollowModal}><i class="fa fa-times" aria-hidden="true"></i></span>
+                  <span className="modal-follow-close" onClick={closeFollowModal}><FaTimes /></span>
                 </div>
                 
                 <div className="modal-follow-container">

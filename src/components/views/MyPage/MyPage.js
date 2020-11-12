@@ -104,7 +104,7 @@ function MyPage(props) {
     <>
       <MainHeader />
         <div className="mypage-info">
-          <div className="mypage-profile-img"></div>
+          <img className="mypage-profile-img" src={userimg} alt="userprofile" />
           <div className="mypage-profile-contents">
             <div className="mypage-profile-first">
               <span className="mypage-username">Username</span>
@@ -115,13 +115,13 @@ function MyPage(props) {
               <Modal
                 isOpen={FollowVisible}
                 onRequestClose={closeFollowModal}
-                className="modal-follow"
-                overlayClassName="modal-follow-overlay"
+                className="common-modal"
+                overlayClassName="common-modal-overlay"
                 contentLabel="Follow Modal"
               >
-                <div className="modal-follow-header">
+                <div className="common-modal-header">
                   <span className="modal-follow-title">팔로우</span>
-                  <span className="modal-follow-close" onClick={closeFollowModal}><FaTimes /></span>
+                  <span className="common-modal-close" onClick={closeFollowModal}><FaTimes /></span>
                 </div>
                 
                 <div className="modal-follow-container">

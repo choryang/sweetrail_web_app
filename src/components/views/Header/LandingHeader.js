@@ -11,7 +11,7 @@ function LandingHeader() {
     <div className="header">
       <Link to={"/"}><img className="logo" src={logo} alt="logo"/></Link>
       <div className="header-right">
-        {location.pathname === "/" && <Link to={"/login"}><button className="main-whitebtn"></button></Link>}
+        {location.pathname === "/" && <Link to={"/login"}><button className="main-whitebtn">로그인</button></Link>}
         {location.pathname === "/" && <Link to={"/register"}><button className="main-bluebtn">회원가입</button></Link>}
       </div>
     </div>

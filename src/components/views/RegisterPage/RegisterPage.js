@@ -49,7 +49,6 @@ function RegisterPage(props) {
     dispatch(registerUser(body)).then((response) => {
       console.log(response.payload.registerSuccess);
       if (response.payload.registerSuccess) {
-        // 서버에서 보내주는 값
         props.history.push("/login");
       } else {
         alert("Failed to sign up");

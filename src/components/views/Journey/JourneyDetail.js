@@ -4,7 +4,7 @@ import Carousel from 'nuka-carousel';
 import {useDispatch} from "react-redux";
 import { withRouter, useParams } from "react-router-dom";
 import { journeyDetail } from "_actions/journey_action";
-import MainNav from "components/views/NavBar/MainNav";
+import MainHeader from "components/views/Header/MainHeader";
 import userimg from "images/user.png";
 import pin from "images/pin.png";
 import "css/journey.scss";
@@ -170,7 +170,7 @@ function JourneyDetail(props) {
 
   return (
     <>
-      <MainNav />
+      <MainHeader />
      
         <div className="journey-detail-title">
           <img src={JourInfo.img} alt="title" />

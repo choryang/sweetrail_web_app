@@ -19,7 +19,6 @@ ReactDOM.render(
   <Provider
     store={createStoreWithMiddleware(
       rootReducer,
-      //redux dev tool 크롬 확장앱 사용
       window.__REDUX_DEVTOOLS_EXTENSION__ &&
         window.__REDUX_DEVTOOLS_EXTENSION__()
     )}

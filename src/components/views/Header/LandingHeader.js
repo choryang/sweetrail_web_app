@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "css/index.scss";
 import logo from "images/logo.png";
 
-function NavBar() {
+function LandingHeader() {
   const location = useLocation();
 
   return (
@@ -18,4 +18,4 @@ function NavBar() {
   );
 }
 
-export default withRouter(NavBar);
+export default withRouter(LandingHeader);

@@ -1,12 +1,12 @@
 import React from "react";
-import Navbar from "components/views/NavBar/NavBar";
+import LandingHeader from "components/views/Header/LandingHeader";
 import "css/index.scss";
 
 function LandingPage() {
   return (
     <div className="background">
       <div className="common-container">
-        <Navbar />
+        <LandingHeader />
       </div>
     </div>
   );

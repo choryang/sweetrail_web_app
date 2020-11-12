@@ -1,6 +1,7 @@
 $mainwhite: #ffffff;
 $subgray: #999999;
 
+//modal-profile
 .modal-profile {
   position: absolute;
   top: 65px;
@@ -28,5 +29,73 @@ $subgray: #999999;
 }
 
 .modal-profile-overlay {
-  background: none;
+  background: transparent;
+}
+
+//modal-follow
+.modal-follow {
+  position: sticky;
+  overflow: auto;
+  border-radius: 8px;
+  width: 30%;
+  margin: 100px auto;
+  padding-bottom: 10px;
+  background-color: $mainwhite;
+
+  .modal-follow-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #bcbcbc;
+    position: relative;
+
+    .modal-follow-title {
+      font-size: 18px;
+      font-weight: bold;
+      padding: 30px 0;
+      width: 100%;
+      text-align: center;
+    }
+
+    .modal-follow-close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 10%;
+      padding: 0 10px;
+      font-size: 24px;
+    }
+  }
+
+  .modal-follow-container {
+    overflow-y: auto;
+    height: 500px;
+
+    .modal-follow-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #bcbcbc;
+
+      .modal-follow-user {
+        display: flex;
+        align-items: center;
+      }
+
+      .follow-profile-img {
+        width: 45px;
+        height: 45px;
+        margin-right: 15px;
+      }
+    }
+  }
+}
+
+.modal-follow-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
 }

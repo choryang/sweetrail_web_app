@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {useDispatch} from "react-redux";
 import { Link } from "react-router-dom";
 import { journeyMain } from "_actions/journey_action";
-import MainNav from "components/views/NavBar/MainNav";
+import MainHeader from "components/views/Header/MainHeader";
 import JourneyThumb from "components/views/Journey/JourneyThumb"
 import example from "images/mainboat.png"
 import example2 from "images/mainbeach.jpg"
@@ -79,7 +79,7 @@ function MainPage() {
   return (
     <>
     <div className="main-background">
-      <MainNav />
+      <MainHeader />
       <div className="main-content">
         <p className="main-title">This is the<br/> Main Screen</p>
         <p className="main-article">나의 한걸음 한걸음을 기록하고,<br/>누군가와 일상, 여행, 관심을 공유하고 싶나요?<br/></p>

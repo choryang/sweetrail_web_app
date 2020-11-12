@@ -1,12 +1,12 @@
 import React from "react";
-import MainNav from "components/views/NavBar/MainNav";
+import MainHeader from "components/views/Header/MainHeader";
 
 
 function ProfileEdit(props) {
 
   return (
     <>
-      <MainNav />
+      <MainHeader />
         <div className="mypage-info">
           <div className="mypage-profile-img"></div>
           <div className="mypage-profile-contents">

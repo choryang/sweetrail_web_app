@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { loginUser } from "_actions/user_action";
 import { withRouter, Link } from "react-router-dom";
-import Navbar from "components/views/NavBar/NavBar";
+import LandingHeader from "components/views/Header/LandingHeader";
 
 function LoginPage(props) {
   const dispatch = useDispatch();
@@ -46,7 +46,7 @@ function LoginPage(props) {
   return (
     <div className="background">
       <div className="common-container">
-        <Navbar />
+        <LandingHeader />
         <div className="form-container">
           <form onSubmit={onSubmit}>
             <input className="main-input" type="email" name="email" placeholder="이메일" value={Email} onChange={onChange} />

@@ -8,7 +8,7 @@ import userimg from "images/user.png";
 import "css/common.scss";
 import "css/modal.scss";
 
-function MainNav(props) {
+function MainHeader(props) {
 
   const [ProfileVisible, setProfileVisible] = useState(false);
 
@@ -50,11 +50,10 @@ function MainNav(props) {
       </div>
         <Modal
           isOpen={ProfileVisible}
-          //onAfterOpen={afterOpenModal}
           onRequestClose={closeProfileModal}
           className="modal-profile"
           overlayClassName="modal-profile-overlay"
-          //contentLabel="Example Modal"
+          contentLabel="main drop Modal"
         >
           <ul className="modal-profile-contents">
             <li><Link to={"/mypage"}><div>마이페이지</div></Link></li>
@@ -66,4 +65,4 @@ function MainNav(props) {
   );
 }
 
-export default withRouter(MainNav);
+export default withRouter(MainHeader);

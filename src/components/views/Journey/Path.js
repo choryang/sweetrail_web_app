@@ -1,9 +1,8 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
-import MainNav from "components/views/NavBar/MainNav";
+import MainHeader from "components/views/Header/MainHeader";
 import pin from "images/pin.png";
 import "css/path.scss";
-import "css/common.scss"
 
 function Path() {
     const AnyReactComponent = ({ text }) => {
@@ -95,7 +94,7 @@ function Path() {
 
     return (
         <>
-            <MainNav />
+            <MainHeader />
             <div className="path-detail-container">
                 <div className="path-detail-left">
                     <div className="path-detail-info">

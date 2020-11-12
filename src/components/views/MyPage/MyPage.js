@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from "react";
 import Modal from 'react-modal';
 import { withRouter } from "react-router-dom";
-import MainNav from "components/views/NavBar/MainNav";
+import MainHeader from "components/views/Header/MainHeader";
 import JourneyThumb from "components/views/Journey/JourneyThumb";
 import userimg from "images/user.png";
 import {FaTimes} from "react-icons/fa"
+import "css/modal.scss";
 
 
 
@@ -101,7 +102,7 @@ function MyPage(props) {
 
   return (
     <>
-      <MainNav />
+      <MainHeader />
         <div className="mypage-info">
           <div className="mypage-profile-img"></div>
           <div className="mypage-profile-contents">
@@ -113,11 +114,10 @@ function MyPage(props) {
               <span className="mypage-profile-text follow" onClick={openFollowModal}>팔로워</span>
               <Modal
                 isOpen={FollowVisible}
-                //onAfterOpen={afterOpenModal}
                 onRequestClose={closeFollowModal}
                 className="modal-follow"
                 overlayClassName="modal-follow-overlay"
-                contentLabel="Example Modal"
+                contentLabel="Follow Modal"
               >
                 <div className="modal-follow-header">
                   <span className="modal-follow-title">팔로우</span>

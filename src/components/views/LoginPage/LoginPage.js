@@ -20,8 +20,6 @@ function LoginPage(props) {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log("Email", Email);
-    console.log("pass", Password);
     let body = {
       email: Email,
       password: Password,

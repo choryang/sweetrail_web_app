@@ -178,7 +178,7 @@ function JourneyDetail(props) {
           <p className="journey-detail-username">Created by {JourInfo.username}</p>
         </div>
         <div className="journey-detail-container">
-          <div className="journey-detail-catergory common-gray-box ">
+          <div className="journey-detail-catergory common-grey-box ">
             <p>
               <span>Category: </span>
               <span>카테고리</span>
@@ -187,7 +187,7 @@ function JourneyDetail(props) {
           </div>
           <div className="journey-detail-contents">
             <div className="journey-detail-path">
-                <div className="journey-detail-map common-gray-box">
+                <div className="journey-detail-map common-grey-box">
                   <GoogleMapReact
                     bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY}}
                     defaultCenter={defaultProps.center}
@@ -213,7 +213,7 @@ function JourneyDetail(props) {
                 </div>
                 <button onClick={onClickGoPath}>경로 자세히 보기</button>
             </div>
-            <div className="journey-detail-info common-gray-box">
+            <div className="journey-detail-info common-grey-box">
               <Carousel className="journey-detail-carousel" wrapAround="true" heightMode="first" enableKeyboardControls="true" width="100%">
                 {images.map((image) => {
                   return (

@@ -1,30 +1,38 @@
 $mainblue: #5aa2f8;
 $mainwhite: #ffffff;
-$subgray: #999999;
+$subgrey: #999999;
 
 //modal-profile
-.modal-profile {
+.modal-profile-drop {
   position: absolute;
+  border: none;
   top: 65px;
   width: 100%;
+  outline: none;
   max-width: 1400px;
   margin-right: 10px;
 
-  .modal-profile-contents {
+  .modal-profile-drop-contents {
     list-style: none;
     width: 150px;
     float: right;
     background-color: $mainwhite;
     border-radius: 8px;
-    border: 1px solid $subgray;
+    border: 1px solid $subgrey;
     padding: 0 10px;
     margin: 0;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-    li div {
-      color: $subgray;
-      cursor: pointer;
-      margin: 5px 0;
+    li {
+      a {
+        text-decoration: none;
+      }
+
+      div {
+        color: $subgrey;
+        cursor: pointer;
+        margin: 5px 0;
+      }
     }
   }
 }

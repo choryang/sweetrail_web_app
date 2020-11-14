@@ -1,0 +1,92 @@
+$mainblue: #5aa2f8;
+$mainwhite: #ffffff;
+$maingrey: #e3eef5;
+$subgrey: #999999;
+
+.mypage-container {
+  max-width: 1200px;
+  margin: 160px auto;
+  padding: 0 10px;
+
+  &.edit {
+    margin-top: 80px;
+    margin-bottom: 0;
+  }
+}
+
+.mypage-info {
+  max-width: 1200px;
+  width: 100%;
+  margin: 100px auto 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  .mypage-profile-edit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mypage-profile-img {
+    display: block;
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    background-color: $maingrey;
+  }
+
+  .mypage-profile-contents {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 100px;
+  }
+}
+
+.mypage-profile-first {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+
+  .mypage-username {
+    font-size: 36px;
+    font-weight: bold;
+  }
+}
+
+.mypage-profile-edit-btn {
+  height: 40px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: $mainwhite;
+  color: #000000;
+  border-radius: 8px;
+  border: 1px solid #000000;
+  padding: 0 15px;
+  margin: 5px 15px 0;
+  //box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+.mypage-profile-others {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+
+  .mypage-profile-text {
+    display: inline-block;
+    margin: 0 5px;
+
+    &.margin {
+      margin-right: 40px;
+    }
+
+    &.follow {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}

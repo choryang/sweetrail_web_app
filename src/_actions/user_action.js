@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LOGIN_USER, REGISTER_USER, AUTH_USER } from "_actions/types";
+import { LOGIN_USER, REGISTER_USER, AUTH_USER, PROFILE_EDIT_PROCESS } from "_actions/types";
 export function loginUser(dataToSubmit) {
   const request = axios
     .post("/api/user/login", dataToSubmit)
@@ -29,4 +29,19 @@ export function auth() {
     type: AUTH_USER,
     payload: request,
   };
+}
+
+export function profileEditProcess(formData) {
+  const config = {
+    headers: {
+      "content-type": "multipart/form-data"
+    }
+  };
+  const request = axios.post("/api/user/profile-upload", formData, config)
+  .then((response) => response.data);
+  
+  return {
+    type: PROFILE_EDIT_PROCESS,
+    payload: request,
+  }
 }

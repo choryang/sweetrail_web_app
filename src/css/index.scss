@@ -1,6 +1,6 @@
 $mainblue: #5aa2f8;
 $mainwhite: #ffffff;
-$maingray: #e3eef5;
+$maingrey: #e3eef5;
 
 .background {
   background-image: url("../images/mainboat.png");
@@ -71,8 +71,8 @@ $maingray: #e3eef5;
 }
 
 .main-input {
-  background-color: $maingray;
-  border: 1px solid $maingray;
+  background-color: $maingrey;
+  border: 1px solid $maingrey;
   border-radius: 40px;
   padding: 5px 20px;
   margin: 10px 5px;

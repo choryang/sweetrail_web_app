@@ -1,45 +1,19 @@
 import React, {useEffect, useState} from "react";
-import Modal from 'react-modal';
-import { withRouter } from "react-router-dom";
+import {useSelector} from "react-redux";
+import { withRouter, useLocation } from "react-router-dom";
 import MainHeader from "components/views/Header/MainHeader";
 import JourneyThumb from "components/views/Journey/JourneyThumb";
-import userimg from "images/user.png";
-import {FaTimes} from "react-icons/fa"
+import Profile from "components/views/MyPage/Profile";
+import ProfileEdit from "components/views/MyPage/ProfileEdit";
 import "css/modal.scss";
+import "css/common.scss";
 
 
 
-function MyPage(props) {
+function MyPage(props){
 
-  // const [UserName, setUserName] = useState("");
-  // const [MyJour, setMyJour] = useState([]);
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(auth()).then((response) => {
-  //     setUserName(response.payload.name);
-  //   });
-
-  //   dispatch(journeyMypage()).then((response) => {
-  //     setMyJour(response.payload);
-  //   })
-    
-  // }, []);
-
-  const [FollowVisible, setFollowVisible] = useState(false);
-
-  const onClickEdit = () => {
-    props.history.push("mypage/profile-edit");
-  }
-
-  const openFollowModal = () => {
-    setFollowVisible(true);
-  }
-
-  const closeFollowModal = () => {
-    setFollowVisible(false);
-  }
-
+  const location = useLocation();
+  const Mode = useSelector(state => state.user.editMode);
   const MyJour = [
     { 
       id: 1,
@@ -99,57 +73,14 @@ function MyPage(props) {
     },
 
   ];
+  
 
   return (
     <>
       <MainHeader />
-        <div className="mypage-info">
-          <img className="mypage-profile-img" src={userimg} alt="userprofile" />
-          <div className="mypage-profile-contents">
-            <div className="mypage-profile-first">
-              <span className="mypage-username">Username</span>
-              <button className="mypage-profile-edit-btn" onClick={onClickEdit}>프로필편집</button>
-            </div>
-            <div className="mypage-profile-others">
-              <span className="mypage-profile-text follow" onClick={openFollowModal}>팔로워</span>
-              <Modal
-                isOpen={FollowVisible}
-                onRequestClose={closeFollowModal}
-                className="common-modal"
-                overlayClassName="common-modal-overlay"
-                contentLabel="Follow Modal"
-              >
-                <div className="common-modal-header">
-                  <span className="modal-follow-title">팔로우</span>
-                  <span className="common-modal-close" onClick={closeFollowModal}><FaTimes /></span>
-                </div>
-                
-                <div className="modal-follow-container">
-                  <div className="modal-follow-item">
-                    <div className="modal-follow-user">
-                      <img className="follow-profile-img" src={userimg} alt="userprofile"/>
-                      <div className="follow-name">name</div>
-                    </div>
-                    <button>팔로우</button>
-                  </div>
-                </div>
-              </Modal>
-              <span className="mypage-profile-text margin">1000</span>
-              <span className="mypage-profile-text follow" onClick={openFollowModal}>팔로잉</span>
-              <span className="mypage-profile-text">1000</span>
-            </div>
-            <div className="mypage-profile-others">
-              <span className="mypage-profile-text">Journey Type</span>
-              <span>geek</span>
-            </div>
-            <div className="mypage-profile-others">
-              <span className="mypage-profile-text">Life Style</span>
-              <span>cafe</span>
-            </div>
-          </div>
-        </div>
-      
-      <div className="mypage-container">
+      {location.pathname === "/mypage" && <Profile push={props.history.push}/>}
+      {location.pathname === "/mypage/profile" && <ProfileEdit push={props.history.push} />}
+      {location.pathname === "/mypage" && <div className="mypage-container">
       <div className="common-catergory">팔로우</div>
       <div className="common-journey">
         {MyJour.map((journey, index) => {
@@ -158,7 +89,7 @@ function MyPage(props) {
           );
         })}
       </div>
-    </div>
+    </div>}
     </>
   );
 }

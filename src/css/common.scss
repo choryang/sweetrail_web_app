@@ -1,7 +1,7 @@
 $mainblue: #5aa2f8;
 $mainwhite: #ffffff;
-$maingray: #e3eef5;
-$subgray: #999999;
+$maingrey: #e3eef5;
+$subgrey: #999999;
 
 .main-background {
   background-repeat: no-repeat;
@@ -60,83 +60,6 @@ $subgray: #999999;
   }
 }
 
-.mypage-info {
-  max-width: 1200px;
-  width: 100%;
-  margin: 100px auto 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  position: relative;
-
-  .mypage-profile-img {
-    display: block;
-    border-radius: 50%;
-    width: 300px;
-    height: 300px;
-    background-color: $maingray;
-    margin-right: 100px;
-
-    &.edit {
-      &:hover {
-        cursor: pointer;
-      }
-    }
-  }
-
-  .mypage-profile-contents {
-    display: flex;
-    flex-direction: column;
-    font-size: 16px;
-    font-weight: bold;
-  }
-}
-
-.mypage-profile-first {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-
-  .mypage-username {
-    font-size: 36px;
-    font-weight: bold;
-  }
-
-  .mypage-profile-edit-btn {
-    height: 40px;
-    font-size: 16px;
-    font-weight: bold;
-    background-color: $mainwhite;
-    color: #000000;
-    border-radius: 8px;
-    border: 1px solid #000000;
-    padding: 0 15px;
-    margin: 5px 15px 0;
-    outline: none;
-    cursor: pointer;
-  }
-}
-
-.mypage-profile-others {
-  display: flex;
-  align-items: center;
-  margin-bottom: 5px;
-
-  .mypage-profile-text {
-    display: inline-block;
-    margin: 0 5px;
-
-    &.margin {
-      margin-right: 40px;
-    }
-
-    &.follow {
-      text-decoration: underline;
-      cursor: pointer;
-    }
-  }
-}
-
 //others
 
 .common-header-container {
@@ -158,8 +81,9 @@ $subgray: #999999;
   }
 
   .user {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
   }
 }
 
@@ -185,12 +109,6 @@ $subgray: #999999;
   }
 }
 
-.mypage-container {
-  max-width: 1200px;
-  margin: 160px auto;
-  padding: 0 10px;
-}
-
 .common-catergory {
   font-size: 24px;
   font-weight: bold;
@@ -214,10 +132,10 @@ $subgray: #999999;
   }
 }
 
-.common-gray-box {
+.common-grey-box {
   display: flex;
   padding: 10px;
-  border: 1px solid $subgray;
+  border: 1px solid $subgrey;
   border-radius: 8px;
 }
 
@@ -241,10 +159,57 @@ $subgray: #999999;
   .common-path-line {
     width: 1px;
     height: 60px;
-    border-left: 5px dotted $subgray;
+    border-left: 5px dotted $subgrey;
     position: absolute;
     top: 5px;
     left: 16px;
     z-index: -1;
   }
+}
+
+.common-category-badge {
+  display: inline-block;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  color: $mainwhite;
+  padding: 0 10px;
+  line-height: 1.5;
+  min-width: 45px;
+  text-align: center;
+
+  &.yellow {
+    background-color: #ecce83;
+  }
+
+  &.purple {
+    background-color: #b57bff;
+  }
+}
+
+.blue-btn {
+  height: 40px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: $mainblue;
+  border: 1px solid $mainblue;
+  color: $mainwhite;
+  border-radius: 8px;
+  padding: 0 15px;
+  margin: 5px 15px 0;
+  //box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+.white-btn {
+  height: 40px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: $mainwhite;
+  border: 1px solid $mainblue;
+  color: $mainblue;
+  border-radius: 8px;
+  padding: 0 15px;
+  margin: 5px 15px 0;
+  //box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
 }

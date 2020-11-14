@@ -4,3 +4,6 @@ export const AUTH_USER = "auth_user";
 export const JOURNEY_MAIN = "journey_main";
 export const JOURNEY_MYPAGE = "journey_mypage";
 export const JOURNEY_DETAIL = "journey_detail";
+export const PROFILE_EDIT = "profile_edit";
+export const PROFILE_CANCEL = "profile_cancel"
+export const PROFILE_EDIT_PROCESS = "profile_edit_process"

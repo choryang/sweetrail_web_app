@@ -1,31 +1,26 @@
 import React, {useEffect, useState} from "react";
 import Modal from 'react-modal';
 import {useSelector, useDispatch} from "react-redux";
-import { profileEdit, profileCancel } from "_actions/user_action";
+import { setMypageUser } from "_actions/user_action";
 import defaultImg from "images/user.png";
 import {FaTimes} from "react-icons/fa"
 import "css/modal.scss";
 import "css/common.scss";
 import "css/mypage.scss";
 
-function Profile(props) {
+function OtherProfile(props) {
 
 
-  const dispatch = useDispatch();
   
   
   var UserInfo = useSelector(state => state.user);
-  var ProfileImg = UserInfo.userImg;
-  var UserName = UserInfo.userName;
-  var JourneyType = UserInfo.journeyType;
-  var LifeStyle = UserInfo.lifeStyle;
+  var ProfileImg = UserInfo.otheruserImg;
+  var UserName = UserInfo.otheruserName;
+  var JourneyType = UserInfo.otherjourneyType;
+  var LifeStyle = UserInfo.otherlifeStyle;
 
   const [FollowVisible, setFollowVisible] = useState(false);
-
-
-  const onClickEdit = () => {
-    dispatch(profileEdit());
-  }
+  const dispatch = useDispatch();
 
   const openFollowModal = () => {
     setFollowVisible(true);
@@ -35,12 +30,17 @@ function Profile(props) {
     setFollowVisible(false);
   }
   
-    if(ProfileImg === "default") {
-      ProfileImg = defaultImg;
-    }
-    else {
-      ProfileImg = process.env.REACT_APP_IMAGE_URL + ProfileImg;
-    }
+  if(ProfileImg === "default") {
+    ProfileImg = defaultImg;
+  }
+  else {
+    ProfileImg = process.env.REACT_APP_IMAGE_URL + ProfileImg;
+  }
+
+  useEffect(() => {
+    let body = {id: UserInfo.otheruserId}
+    dispatch(setMypageUser(body));
+  }, []);
 
   
   return (
@@ -50,7 +50,7 @@ function Profile(props) {
           <div className="mypage-profile-contents">
             <div className="mypage-profile-first">
               <span className="mypage-username">{UserName}</span>
-              <button className="mypage-profile-edit-btn" onClick={onClickEdit}>프로필편집</button>
+              <button className="blue-btn">팔로잉</button>
             </div>
             <div className="mypage-profile-others">
               <span className="mypage-profile-text follow" onClick={openFollowModal}>팔로워</span>
@@ -94,6 +94,6 @@ function Profile(props) {
   );
 }
 
-export default Profile;
+export default OtherProfile;
 
  

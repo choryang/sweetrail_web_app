@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Modal from 'react-modal';
-import {useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
+import {setMyPage} from "_actions/user_action"
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import logo from "images/logo.png";
@@ -11,6 +12,7 @@ import "css/modal.scss";
 
 function MainHeader(props) {
 
+  const dispatch = useDispatch();
   var UserInfo = useSelector(state => state.user);
   var ProfileImg = UserInfo.userImg;
   const [ProfileVisible, setProfileVisible] = useState(false);
@@ -36,6 +38,11 @@ function MainHeader(props) {
     else {
       setProfileVisible(true);
     }
+  }
+
+  const onClickMypage = () => {
+    dispatch(setMyPage());
+    props.history.push(`/mypage/${UserInfo.userName}`)
   }
 
 
@@ -64,7 +71,7 @@ function MainHeader(props) {
           contentLabel="main drop Modal"
         >
           <ul className="modal-profile-drop-contents">
-            <li><Link to={"/mypage"}><div>마이페이지</div></Link></li>
+            <li><div onClick={onClickMypage}>마이페이지</div></li>
             <li><Link to={"/mypage"}><div>스크랩</div></Link></li>
             <li><div onClick={onClickLogout}>로그아웃</div></li>
           </ul>

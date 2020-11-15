@@ -1,5 +1,15 @@
 import axios from "axios";
-import { LOGIN_USER, REGISTER_USER, AUTH_USER, PROFILE_EDIT_PROCESS } from "_actions/types";
+import { 
+  LOGIN_USER, 
+  REGISTER_USER,
+  AUTH_USER, 
+  PROFILE_EDIT_PROCESS, 
+  PROFILE_EDIT, 
+  PROFILE_CANCEL, 
+  SET_MYPAGE_USER, 
+  SET_MYPAGE_USER_ID,
+  SET_MYPAGE } from "_actions/types";
+
 export function loginUser(dataToSubmit) {
   const request = axios
     .post("/api/user/login", dataToSubmit)
@@ -31,6 +41,20 @@ export function auth() {
   };
 }
 
+export function profileEdit(){
+  return {
+    type: PROFILE_EDIT,
+    mode: "EDIT"
+  }
+}
+
+export function profileCancel(){
+  return {
+    type: PROFILE_CANCEL,
+    mode: "READ"
+  }
+}
+
 export function profileEditProcess(formData) {
   const config = {
     headers: {
@@ -43,5 +67,33 @@ export function profileEditProcess(formData) {
   return {
     type: PROFILE_EDIT_PROCESS,
     payload: request,
+    mode: "READ"
   }
 }
+
+export function setMypageUser(dataToSubmit) {
+  const request = axios.post("/api/user/other-user", dataToSubmit)
+  .then((response) => response.data);
+  
+  return {
+    type: SET_MYPAGE_USER,
+    payload: request,
+    
+  }
+}
+
+export function setMypageUserId(id) {
+  return {
+    type: SET_MYPAGE_USER_ID,
+    id: id,
+    mode: true
+  }
+}
+
+export function setMyPage() {
+  return {
+    type: SET_MYPAGE,
+    mode: false
+  }
+}
+  

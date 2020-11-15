@@ -1,15 +1,20 @@
 import React from "react";
 import "css/common.scss";
 import {withRouter} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import { setMypageUserId } from "_actions/user_action";
 
 function JourneyThumb(props) {
+
+  const dispatch = useDispatch();
+
   const onClick = () => {
     props.history.push(`/journey/${props.id}`);
   }
 
-  const otherUserPage = (e) => {
-    e.preventDefault();
-    props.history.push(`/mypage`);
+  const otherUserPage = () => {
+    dispatch(setMypageUserId(props.authorId));
+    props.history.push(`/mypage/${props.author}`);
   }
   
   return (

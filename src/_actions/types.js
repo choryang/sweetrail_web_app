@@ -7,3 +7,6 @@ export const JOURNEY_DETAIL = "journey_detail";
 export const PROFILE_EDIT = "profile_edit";
 export const PROFILE_CANCEL = "profile_cancel"
 export const PROFILE_EDIT_PROCESS = "profile_edit_process"
+export const SET_MYPAGE_USER = "set_mypage_user";
+export const SET_MYPAGE_USER_ID = "set_mypage_user_id"
+export const SET_MYPAGE = "set_mypage"

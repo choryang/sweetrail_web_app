@@ -47,7 +47,7 @@ function MainPage() {
       <div className="common-journey">
         {PublicJour.map((journey, index) => {
           return (
-            <JourneyThumb id={journey.id} name={journey.journeyName} type={journey.type} accompany={journey.accompany} author={journey.userName} key={index}/>
+            <JourneyThumb id={journey.id} name={journey.journeyName} type={journey.type} accompany={journey.accompany} author={journey.userName} authorId = {journey.userId} key={index}/>
           );
         })}
       </div>

@@ -1,20 +1,15 @@
 import React, {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
-import { withRouter, useLocation, useParams } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import MainHeader from "components/views/Header/MainHeader";
 import JourneyThumb from "components/views/Journey/JourneyThumb";
-import Profile from "components/views/MyPage/Profile";
-import ProfileEdit from "components/views/MyPage/ProfileEdit";
+import OtherProfile from "components/views/MyPage/OtherProfile";
 import "css/modal.scss";
 import "css/common.scss";
 
 
 
-function MyPage(props){
-
-  const Mode = useSelector(state => state.user.profileMode);
-  const {username} = props.match.params;
-
+function OtherPage(props){
 
   const MyJour = [
     { 
@@ -80,22 +75,21 @@ function MyPage(props){
   return (
     <>
       <MainHeader />
-      {Mode === "READ" && <Profile push={props.history.push} username={username}/>}
-      {Mode === "EDIT" && <ProfileEdit push={props.history.push} username={username}/>}
-      {Mode === "READ" && <div className="mypage-container">
-      <div className="common-catergory">팔로우</div>
-      <div className="common-journey">
-        {MyJour.map((journey, index) => {
-          return (
-            <JourneyThumb id={journey.id} name={journey.name} category={journey.category} accompany={journey.accompany} img={journey.img} key={index}/>
-          );
-        })}
-      </div>
-    </div>}
+      <OtherProfile push={props.history.push} />
+      <div className="mypage-container">
+        <div className="common-catergory">팔로우</div>
+        <div className="common-journey">
+          {MyJour.map((journey, index) => {
+            return (
+              <JourneyThumb id={journey.id} name={journey.name} category={journey.category} accompany={journey.accompany} img={journey.img} key={index}/>
+            );
+          })}
+        </div>
+    </div>
     </>
   );
 }
 
-export default withRouter(MyPage);
+export default withRouter(OtherPage);
 
  

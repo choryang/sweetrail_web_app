@@ -12,7 +12,6 @@ function ProfileEdit(props) {
   const dispatch = useDispatch();
   var UserInfo = useSelector(state => state.user);
   var UserId = UserInfo.userId;
-  var ProfileImg = UserInfo.userImg;
   var UserName = UserInfo.userName;
   var JourneyType = UserInfo.journeyType;
   var LifeStyle = UserInfo.lifeStyle;
@@ -20,17 +19,20 @@ function ProfileEdit(props) {
   const [File, setFile] = useState(null);
   const [EditImageVisible, setEditImageVisible] = useState(false);
   const [DefaultFlag, setDefaultFlag] = useState(false);
+  const [ChangeFlag, setChangeFlag] = useState(false);
+  const [ProfileImg, setProfileImg] = useState(UserInfo.userImg);
 
   const defaultImage = () => {
     setDefaultFlag(true);
-    ProfileImg = defaultImg;
+    setProfileImg(defaultImg);
     setEditImageVisible(false);
   }
 
   const onChangeImg = (e) => {
-    setFile(e.target.files[0]);
-    ProfileImg = URL.createObjectURL(e.target.files[0]);
+    setChangeFlag(true);
     setDefaultFlag(false);
+    setFile(e.target.files[0]);
+    setProfileImg(URL.createObjectURL(e.target.files[0]));
     setEditImageVisible(false);
   }
 
@@ -48,7 +50,7 @@ function ProfileEdit(props) {
   }
 
   const onClickBackProfile = () =>{
-    props.push("/mypage");
+    dispatch(profileCancel());
   }
 
   const onChangeText = (e) => {
@@ -64,18 +66,22 @@ function ProfileEdit(props) {
   const onClickEditProfile = () => {
     const formData = new FormData();
     if (!DefaultFlag) {
-      formData.append("userImg", File);
+      if(ChangeFlag) {
+        formData.append("userImg", File);
+      }
     }
+    formData.append("defaultFlag", DefaultFlag);
     formData.append("userId", UserId);
     dispatch(profileEditProcess(formData));
-    props.push("/mypage");
+    props.push(`/mypage/${UserName}`);
   }
 
+  
   if (ProfileImg === "default") {
-    ProfileImg = defaultImg;
+    setProfileImg(defaultImg);
   }
   else if (ProfileImg === UserInfo.userImg){
-    ProfileImg = process.env.REACT_APP_IMAGE_URL + UserInfo.userImg;
+    setProfileImg(process.env.REACT_APP_IMAGE_URL + UserInfo.userImg);
   }
 
   return (

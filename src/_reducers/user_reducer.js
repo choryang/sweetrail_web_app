@@ -1,10 +1,9 @@
 
 import { LOGIN_USER, REGISTER_USER, AUTH_USER, PROFILE_EDIT_PROCESS } from "_actions/types";
-import defaultImg from "images/user.png";
 
 const initState = {
   userId: "",
-  userImg: defaultImg,
+  userImg: "",
   userName: "",
   journeyType: "",
   lifeStyle: "",

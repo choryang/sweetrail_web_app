@@ -12,24 +12,25 @@ function ProfileEdit(props) {
   const dispatch = useDispatch();
   var UserInfo = useSelector(state => state.user);
   var UserId = UserInfo.userId;
+  var ProfileImg = UserInfo.userImg;
   var UserName = UserInfo.userName;
   var JourneyType = UserInfo.journeyType;
   var LifeStyle = UserInfo.lifeStyle;
-  var defaultFlag = false;
-
 
   const [File, setFile] = useState(null);
-  const [ProfileImg, setProfileImg] = useState(UserInfo.userImg);
   const [EditImageVisible, setEditImageVisible] = useState(false);
+  const [DefaultFlag, setDefaultFlag] = useState(false);
+
   const defaultImage = () => {
-    defaultFlag = true;
-    setProfileImg(defaultImg);
+    setDefaultFlag(true);
+    ProfileImg = defaultImg;
     setEditImageVisible(false);
   }
 
   const onChangeImg = (e) => {
     setFile(e.target.files[0]);
-    setProfileImg(URL.createObjectURL(e.target.files[0]));
+    ProfileImg = URL.createObjectURL(e.target.files[0]);
+    setDefaultFlag(false);
     setEditImageVisible(false);
   }
 
@@ -62,7 +63,7 @@ function ProfileEdit(props) {
 
   const onClickEditProfile = () => {
     const formData = new FormData();
-    if (!defaultFlag) {
+    if (!DefaultFlag) {
       formData.append("userImg", File);
     }
     formData.append("userId", UserId);
@@ -70,15 +71,12 @@ function ProfileEdit(props) {
     props.push("/mypage");
   }
 
-  useEffect(() => {
-    if (ProfileImg === "default") {
-      setProfileImg(defaultImg);
-    }
-    else if (ProfileImg === UserInfo.userImg){
-      setProfileImg(`http://127.0.0.1:5000${UserInfo.userImg}`);
-    }
-  }, [ProfileImg]);
-
+  if (ProfileImg === "default") {
+    ProfileImg = defaultImg;
+  }
+  else if (ProfileImg === UserInfo.userImg){
+    ProfileImg = process.env.REACT_APP_IMAGE_URL + UserInfo.userImg;
+  }
 
   return (
     <>

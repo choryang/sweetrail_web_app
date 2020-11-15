@@ -27,7 +27,7 @@ function LoginPage(props) {
 
     dispatch(loginUser(body)).then((response) => {
       if (response.payload.NoExistedUser){
-        alert("존재하지 않는 사용자입니다.")
+        alert("존재하지 않는 사용자입니다.");
         setEmail("");
         setPassword("");
       }

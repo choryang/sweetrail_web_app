@@ -12,17 +12,12 @@ function Profile(props) {
 
   
   var UserInfo = useSelector(state => state.user);
-  var isDefault = UserInfo.userImg;
-  var ProfileImg = `http://127.0.0.1:5000${UserInfo.userImg}`;
+  var ProfileImg = UserInfo.userImg;
   var UserName = UserInfo.userName;
   var JourneyType = UserInfo.journeyType;
   var LifeStyle = UserInfo.lifeStyle;
 
   const [FollowVisible, setFollowVisible] = useState(false);
-
-  if (isDefault === "default") {
-    ProfileImg = defaultImg;
-  }
 
   const onClickEdit = () => {
     props.push("/mypage/profile");
@@ -34,6 +29,13 @@ function Profile(props) {
 
   const closeFollowModal = () => {
     setFollowVisible(false);
+  }
+
+  if(ProfileImg === "default") {
+    ProfileImg = defaultImg;
+  }
+  else {
+    ProfileImg = process.env.REACT_APP_IMAGE_URL + ProfileImg;
   }
   
   return (
@@ -65,7 +67,7 @@ function Profile(props) {
                       <img className="follow-profile-img" src={defaultImg} alt="userprofile"/>
                       <div className="follow-name">name</div>
                     </div>
-                    <button>팔로우</button>
+                    <button className="blue-btn">팔로잉</button>
                   </div>
                 </div>
               </Modal>

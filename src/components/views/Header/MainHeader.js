@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Modal from 'react-modal';
 import {useSelector} from "react-redux";
 import { withRouter } from "react-router-dom";
@@ -12,13 +12,17 @@ import "css/modal.scss";
 function MainHeader(props) {
 
   var UserInfo = useSelector(state => state.user);
-  var isDefault = UserInfo.userImg;
-  var ProfileImg = `http://127.0.0.1:5000${UserInfo.userImg}`;
+  var ProfileImg = UserInfo.userImg;
   const [ProfileVisible, setProfileVisible] = useState(false);
 
-  if (isDefault === "default") {
+  
+  if(ProfileImg === "default") {
     ProfileImg = defaultImg;
   }
+  else {
+    ProfileImg = process.env.REACT_APP_IMAGE_URL + ProfileImg;
+  }
+  
 
   const closeProfileModal = () => {
     setProfileVisible(false);

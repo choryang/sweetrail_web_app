@@ -13,7 +13,6 @@ import "css/common.scss";
 function MyPage(props){
 
   const location = useLocation();
-  const Mode = useSelector(state => state.user.editMode);
   const MyJour = [
     { 
       id: 1,

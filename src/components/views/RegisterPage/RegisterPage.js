@@ -49,6 +49,7 @@ function RegisterPage(props) {
     dispatch(registerUser(body)).then((response) => {
       console.log(response.payload.registerSuccess);
       if (response.payload.registerSuccess) {
+        alert("회원가입이 완료되었습니다!");
         props.history.push("/login");
       } else {
         alert("Failed to sign up");

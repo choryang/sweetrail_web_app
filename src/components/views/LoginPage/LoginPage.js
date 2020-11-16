@@ -31,7 +31,7 @@ function LoginPage(props) {
         setEmail("");
         setPassword("");
       }
-      else if (response.payload.loginSuccess) {
+      else if (response.payload.isLogin) {
         props.history.push("/main");
       } 
       else {

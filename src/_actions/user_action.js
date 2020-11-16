@@ -3,10 +3,11 @@ import {
   LOGIN_USER, 
   REGISTER_USER,
   AUTH_USER, 
+  GET_USER_INFO,
+  LOGOUt_USER,
   PROFILE_EDIT_PROCESS, 
   PROFILE_EDIT, 
   PROFILE_CANCEL, 
-  SET_MYPAGE_USER, 
   SET_MYPAGE_USER_ID,
   SET_MYPAGE } from "_actions/types";
 
@@ -41,6 +42,23 @@ export function auth() {
   };
 }
 
+export function getUserInfo(id) {
+  const request = axios.get(`/api/user/user-info/${id}`)
+  .then((response) => response.data);
+  
+  return {
+    type: GET_USER_INFO,
+    payload: request,
+    
+  }
+}
+
+export function logoutUser() {
+  return {
+    type: LOGOUt_USER
+  }
+}
+
 export function profileEdit(){
   return {
     type: PROFILE_EDIT,
@@ -68,17 +86,6 @@ export function profileEditProcess(formData) {
     type: PROFILE_EDIT_PROCESS,
     payload: request,
     mode: "READ"
-  }
-}
-
-export function setMypageUser(dataToSubmit) {
-  const request = axios.post("/api/user/other-user", dataToSubmit)
-  .then((response) => response.data);
-  
-  return {
-    type: SET_MYPAGE_USER,
-    payload: request,
-    
   }
 }
 

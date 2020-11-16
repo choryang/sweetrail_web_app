@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { Link } from "react-router-dom";
 import {FaSearch} from "react-icons/fa"
 import { journeyMain } from "_actions/journey_action";
+import { getUserInfo } from "_actions/user_action";
 import MainHeader from "components/views/Header/MainHeader";
 import JourneyThumb from "components/views/Journey/JourneyThumb"
 import example from "images/mainboat.png"
@@ -11,12 +12,18 @@ import example2 from "images/mainbeach.jpg"
 function MainPage() {
   const [PublicJour, setPublicJour] = useState([]);
   const dispatch = useDispatch();
+  const UserInfo = useSelector(state => state.user);
+
+  
   useEffect(() => {
     dispatch(journeyMain()).then((response) => {
       setPublicJour(response.payload);
     });
   }, []);
-
+  
+  useEffect(() => {
+    dispatch(getUserInfo(UserInfo.userId));
+  }, [UserInfo.userId]);
   
   return (
     <>

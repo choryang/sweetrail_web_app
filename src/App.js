@@ -9,6 +9,7 @@ import MyPage from "components/views/MyPage/MyPage";
 import OtherPage from "components/views/MyPage/OtherPage";
 import JourneyDetail from "components/views/Journey/JourneyDetail";
 import PathDetail from "components/views/Journey/Path"
+import LoadingPage from "components/views/Loading/LoadingPage"
 import Auth from "hoc/auth";
 
 function App() {
@@ -24,8 +25,9 @@ function App() {
           <Route exact path="/main" component={Auth(MainPage, true)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
+          <Route exact path="/loading" component={Auth(LoadingPage, true)} />
           <Route exact path="/mypage/:username" component={User ? Auth(OtherPage, true) : Auth(MyPage, true)} />
-          <Route path="/mypage/:username/profile" component={User ? Auth(OtherPage, true) : Auth(MyPage, true)} />
+          <Route path="/mypage/:username/profile" component={Auth(MyPage, true)} />
           <Route
             exact path="/journey/:id"
             component={Auth(JourneyDetail, true)}

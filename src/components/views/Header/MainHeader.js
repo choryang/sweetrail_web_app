@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Modal from 'react-modal';
 import {useSelector, useDispatch} from "react-redux";
-import {setMyPage} from "_actions/user_action"
+import {setMyPage, logoutUser} from "_actions/user_action"
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import logo from "images/logo.png";
@@ -50,6 +50,7 @@ function MainHeader(props) {
     axios.get("/api/user/logout").then((reponse) => {
       if (reponse.data.success) {
         alert("로그아웃 되었습니다.");
+        dispatch(logoutUser());
         props.history.push("/");
       } else {
         alert("로그아웃에 실패하였습니다.");

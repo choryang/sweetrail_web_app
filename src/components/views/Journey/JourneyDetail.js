@@ -11,7 +11,7 @@ import "css/journey.scss";
 
 function JourneyDetail(props) {
 
-  // const { id } = useParams();
+  const { id } = useParams();
   // const [JourInfo, setJourInfo] = useState({});
   // const dispatch = useDispatch();
   // useEffect(() => {
@@ -20,11 +20,8 @@ function JourneyDetail(props) {
   //   });
   // }, []);
 
-  const journey_id = 1;
-  const path_id = 1;
-
   const onClickGoPath = () => {
-    props.history.push(`/path/1`);
+    props.history.push(`/journey/${id}/path/1`);
   }
 
   const AnyReactComponent = ({ text }) => {

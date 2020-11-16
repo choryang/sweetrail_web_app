@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import Modal from 'react-modal';
 import {useSelector, useDispatch} from "react-redux";
-import { setMypageUser } from "_actions/user_action";
+import { getUserInfo } from "_actions/user_action";
 import defaultImg from "images/user.png";
 import {FaTimes} from "react-icons/fa"
 import "css/modal.scss";
@@ -38,8 +38,7 @@ function OtherProfile(props) {
   }
 
   useEffect(() => {
-    let body = {id: UserInfo.otheruserId}
-    dispatch(setMypageUser(body));
+    dispatch(getUserInfo(UserInfo.otheruserId));
   }, []);
 
   

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { auth } from "_actions/user_action";
 export default function (SpecificComponent, option, adminRoute = null) {
   //option: null 아무나 출입 가능
@@ -9,23 +9,24 @@ export default function (SpecificComponent, option, adminRoute = null) {
   //true 어드민 유저만
   function AuthenticationCheck(props) {
     const dispatch = useDispatch();
+    const isAuth = useSelector(state => state.user.isAuth)
+
     useEffect(() => {
-      dispatch(auth()).then((response) => {
+      dispatch(auth()).then(() => {
         //로그인 하지 않은 상태
-        if (!response.payload.isAuth) {
+        if (!isAuth) {
           if (option) {
-            props.history.push("/login");
+            return props.history.push("/login");
           }
-        } else {
-          //로그인한 상태
-          if (!option) {
-            props.history.push("/main");
-          }
+        } 
+        else if (!option) {
+            return props.history.push("/main");
         }
       });
     }, []);
 
     return <SpecificComponent />;
+
   }
 
   return AuthenticationCheck;

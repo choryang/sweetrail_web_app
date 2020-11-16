@@ -66,7 +66,6 @@ function ProfileEdit(props) {
     const formData = new FormData();
     formData.append("userImg", File);
     dispatch(profileEditProcess(formData));
-    props.push(`/mypage/${UserName}`);
   }
 
   

@@ -1,15 +1,23 @@
+$screen-md: 768px;
+
 $mainblue: #5aa2f8;
 $mainwhite: #ffffff;
+$maingrey: #e3eef5;
 $subgrey: #999999;
+
+@mixin mobile {
+  @media (max-width: $screen-md) {
+    @content;
+  }
+}
 
 //modal-profile
 .modal-profile-drop {
   position: absolute;
   border: none;
   top: 65px;
-  width: 100%;
   outline: none;
-  max-width: 1400px;
+  max-width: 95%;
   margin-right: 10px;
 
   .modal-profile-drop-contents {
@@ -41,7 +49,24 @@ $subgrey: #999999;
   background: transparent;
 }
 
-//modal-follow
+@include mobile {
+  .modal-profile-drop {
+    top: 40px;
+    right: 0;
+    width: 90%;
+
+    .modal-profile-drop-contents {
+      width: 100px;
+      padding: 0 5px;
+
+      li div {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+//modal etc
 .common-modal {
   position: sticky;
   overflow: auto;
@@ -120,4 +145,48 @@ $subgrey: #999999;
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+@include mobile {
+  .common-modal {
+    width: 90%;
+
+    .common-modal-header {
+      .common-modal-title {
+        padding: 15px 0;
+
+        &.red {
+          padding: 10px 0;
+        }
+
+        &.blue {
+          padding: 10px 0;
+        }
+      }
+    }
+
+    .modal-follow-container {
+      overflow-y: auto;
+      height: 300px;
+
+      .modal-follow-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid #bcbcbc;
+
+        .modal-follow-user {
+          display: flex;
+          align-items: center;
+        }
+
+        .follow-profile-img {
+          width: 25px;
+          height: 25px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
 }

@@ -1,7 +1,15 @@
+$screen-md: 768px;
+
 $mainblue: #5aa2f8;
 $mainwhite: #ffffff;
 $maingrey: #e3eef5;
 $subgrey: #999999;
+
+@mixin mobile {
+  @media (max-width: $screen-md) {
+    @content;
+  }
+}
 
 .main-background {
   background-repeat: no-repeat;
@@ -63,8 +71,33 @@ $subgrey: #999999;
   }
 }
 
-//others
+@include mobile {
+  .main-background {
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 250px;
+    margin: 0 auto;
+    mix-blend-mode: multiply;
 
+    .main-content {
+      margin: 10%;
+
+      .main-title {
+        font-size: 32px;
+        margin: 0;
+        line-height: 1;
+      }
+
+      .main-article {
+        font-size: 14px;
+        padding: 0;
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+//header
 .common-header-container {
   background-color: $mainwhite;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -87,9 +120,26 @@ $subgrey: #999999;
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    cursor: pointer;
   }
 }
 
+@include mobile {
+  .common-header {
+    .logo {
+      width: 60px;
+      height: 15px;
+    }
+
+    .user {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+    }
+  }
+}
+
+//추천
 .main-container {
   max-width: 1200px;
   margin: 80px auto;
@@ -97,7 +147,6 @@ $subgrey: #999999;
 
   .main-journey {
     display: flex;
-    flex-direction: row;
 
     .item {
       width: calc((100% - 20px) / 2);
@@ -112,10 +161,26 @@ $subgrey: #999999;
   }
 }
 
+@include mobile {
+  .main-container {
+    .main-journey {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .item {
+        width: 100%;
+        margin: 10px;
+      }
+    }
+  }
+}
+
+//메인 팔로우 or 마이페이지 여행 아이템
 .common-catergory {
   font-size: 24px;
   font-weight: bold;
-  width: 300px;
+  width: calc((100% - 60px) / 3);
   color: #1c183d;
   border-bottom: 1px solid #000000;
   margin-left: 10px;
@@ -125,7 +190,7 @@ $subgrey: #999999;
   display: inline-block;
   position: relative;
   width: calc((100% - 60px) / 3);
-  margin: 20px 10px;
+  margin: 10px 10px 35px;
   position: relative;
   cursor: pointer;
 
@@ -169,6 +234,32 @@ $subgrey: #999999;
       &.author {
         text-decoration: underline;
         cursor: pointer;
+      }
+    }
+  }
+}
+
+@include mobile {
+  .common-catergory {
+    width: calc(100% - 20px);
+  }
+
+  .common-journey-item {
+    display: block;
+    width: 100%;
+    margin: 10px 0 30px;
+
+    .journey-info {
+      padding: 10px;
+    }
+
+    .journey-info-title {
+      font-size: 16px;
+    }
+
+    .journey-info-others {
+      .journey-info-grey {
+        font-size: 14px;
       }
     }
   }

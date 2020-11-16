@@ -31,7 +31,7 @@ function MainPage() {
       <MainHeader />
       <div className="main-content">
         <p className="main-title">This is the<br/> Main Screen</p>
-        <p className="main-article">나의 한걸음 한걸음을 기록하고,<br/>누군가와 일상, 여행, 관심을 공유하고 싶나요?<br/></p>
+        <p className="main-article">누군가와 일상, 여행, 관심을 공유하고 싶나요?<br/></p>
         <div className="main-search">
           <FaSearch />
           <input type="text" placeholder="search Post/User"/>

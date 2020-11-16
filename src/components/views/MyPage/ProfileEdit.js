@@ -88,8 +88,8 @@ function ProfileEdit(props) {
     <>
         <div className="mypage-info">
           <div className="mypage-profile-edit">
-            <img className="mypage-profile-img" src={ProfileImg} alt="userprofile" />
-            <button className="mypage-profile-edit-btn" onClick={openEditImage}>프로필 사진 변경</button>
+            <img className="mypage-profile-img edit" src={ProfileImg} alt="userprofile" />
+            <button className="mypage-profile-edit-btn img" onClick={openEditImage}>프로필 사진 변경</button>
             <Modal
               isOpen={EditImageVisible}
               onRequestClose={closeEditImage}
@@ -112,17 +112,19 @@ function ProfileEdit(props) {
           </div>
           <div className="mypage-profile-contents">
             <div className="mypage-profile-first">
-              <input className="mypage-username"type="text" name="UserName" value={UserName} onChange={onChangeText}></input>
-              <button type="submit" className="blue-btn" onClick={onClickEditProfile}>저장</button>
-              <button className="mypage-profile-edit-btn" onClick={onClickBackProfile}>취소</button>
+              <input className="mypage-username edit"type="text" name="UserName" value={UserName} onChange={onChangeText}></input>
             </div>
-            <div className="mypage-profile-others">
+            <div className="mypage-profile-others edit">
               <span className="mypage-profile-text">Journey Type</span>
-              <input className="common-category-badge yellow" type="text" name="JourneyType" value={JourneyType} onChange={onChangeText}></input>
+              <input type="text" name="JourneyType" value={JourneyType} onChange={onChangeText}></input>
             </div>
-            <div className="mypage-profile-others">
+            <div className="mypage-profile-others edit">
               <span className="mypage-profile-text">Life Style</span>
-              <input className="common-category-badge purple" type="text" name="LifeStyle" value={LifeStyle} onChange={onChangeText}></input>
+              <input type="text" name="LifeStyle" value={LifeStyle} onChange={onChangeText}></input>
+            </div>
+            <div className="mypage-profile-btn-container">
+              <button type="submit" className="blue-btn" onClick={onClickEditProfile}>저장</button>
+              <button className="white-btn" onClick={onClickBackProfile}>취소</button>
             </div>
           </div>
         </div>

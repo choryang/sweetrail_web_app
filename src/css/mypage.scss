@@ -1,7 +1,15 @@
+$screen-md: 768px;
+
 $mainblue: #5aa2f8;
 $mainwhite: #ffffff;
 $maingrey: #e3eef5;
 $subgrey: #999999;
+
+@mixin mobile {
+  @media (max-width: $screen-md) {
+    @content;
+  }
+}
 
 .mypage-container {
   max-width: 1200px;
@@ -73,7 +81,6 @@ $subgrey: #999999;
 .mypage-profile-others {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   margin-bottom: 15px;
 
   .mypage-profile-text {
@@ -87,6 +94,94 @@ $subgrey: #999999;
     &.follow {
       text-decoration: underline;
       cursor: pointer;
+    }
+  }
+}
+
+.mypage-profile-btn-container {
+  .blue-btn {
+    margin: 0;
+  }
+}
+
+@include mobile {
+  .mypage-container {
+    margin: 40px auto;
+    padding: 0 10px;
+
+    &.edit {
+      margin-top: 80px;
+      margin-bottom: 0;
+    }
+  }
+
+  .mypage-info {
+    margin: 30px 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+
+    .mypage-profile-edit {
+      align-items: normal;
+    }
+
+    .mypage-profile-img {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 20px;
+
+      &.edit {
+        margin-bottom: 10px;
+        margin-left: 10px;
+      }
+    }
+
+    .mypage-profile-contents {
+      font-size: 16px;
+      margin-left: 0;
+    }
+  }
+
+  .mypage-profile-first {
+    margin-bottom: 15px;
+
+    .mypage-username {
+      font-size: 32px;
+
+      &.edit {
+        margin-top: 20px;
+        width: 100%;
+      }
+    }
+  }
+
+  .mypage-profile-edit-btn {
+    height: 30px;
+    font-size: 14px;
+    padding: 0 10px;
+
+    &.img {
+      margin: 0;
+    }
+  }
+
+  .mypage-profile-others {
+    margin-bottom: 10px;
+    &.edit {
+      flex-direction: column;
+      align-items: normal;
+
+      input {
+        width: 100%;
+      }
+    }
+
+    .mypage-profile-text {
+      margin: 0 15px 5px 0;
+
+      &.margin {
+        margin-right: 10px;
+      }
     }
   }
 }

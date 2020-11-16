@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
-import {useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 import { withRouter, useLocation, useParams } from "react-router-dom";
+import {journeyMypage} from "_actions/journey_action"
 import MainHeader from "components/views/Header/MainHeader";
 import JourneyThumb from "components/views/Journey/JourneyThumb";
 import Profile from "components/views/MyPage/Profile";
@@ -13,81 +14,30 @@ import "css/common.scss";
 function MyPage(props){
 
   const Mode = useSelector(state => state.user.profileMode);
-  const {username} = props.match.params;
+  const id = useSelector(state => state.user.userId);
+  const { username } = useParams();
 
+  const [MyJourInfo, setMyJourInfo] = useState([]);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(journeyMypage(id)).then((response) => {
+      setMyJourInfo(response.payload);
+    });
+  }, []);
 
-  const MyJour = [
-    { 
-      id: 1,
-      name: "Still Stand Tall1",
-      username: "aaaaa",
-      category: "geek",
-      accompany: "",
-      img: "https://sothebysrealty.gr/wp-content/uploads/2016/11/Santorini-sunset-at-dawn-Greece-Sothebys-International-Realty.jpg",
-    },
-    { 
-      id: 2,
-      name: "Still Stand Tall2",
-      username: "aaaaa",
-      category: "geek",
-      accompany: "",
-      img: "https://sothebysrealty.gr/wp-content/uploads/2016/11/Santorini-sunset-at-dawn-Greece-Sothebys-International-Realty.jpg",
-    },
-    { 
-      id: 3,
-      name: "Still Stand Tall3",
-      username: "aaaaa",
-      category: "geek",
-      accompany: "",
-      img: "https://sothebysrealty.gr/wp-content/uploads/2016/11/Santorini-sunset-at-dawn-Greece-Sothebys-International-Realty.jpg",
-    },
-    { 
-      id: 4,
-      name: "Still Stand Tall4",
-      username: "aaaaa",
-      category: "geek",
-      accompany: "",
-      img: "https://sothebysrealty.gr/wp-content/uploads/2016/11/Santorini-sunset-at-dawn-Greece-Sothebys-International-Realty.jpg",
-    },
-    { 
-      id: 5,
-      name: "Still Stand Tall5",
-      username: "aaaaa",
-      category: "geek",
-      accompany: "",
-      img: "https://sothebysrealty.gr/wp-content/uploads/2016/11/Santorini-sunset-at-dawn-Greece-Sothebys-International-Realty.jpg",
-    },
-    { 
-      id: 6,
-      name: "Still Stand Tall6",
-      username: "aaaaa",
-      category: "geek",
-      accompany: "",
-      img: "https://sothebysrealty.gr/wp-content/uploads/2016/11/Santorini-sunset-at-dawn-Greece-Sothebys-International-Realty.jpg",
-    },
-    { 
-      id: 7,
-      name: "Still Stand Tall7",
-      username: "aaaaa",
-      category: "geek",
-      accompany: "",
-      img: "https://sothebysrealty.gr/wp-content/uploads/2016/11/Santorini-sunset-at-dawn-Greece-Sothebys-International-Realty.jpg",
-    },
-
-  ];
   
 
   return (
     <>
       <MainHeader />
-      {Mode === "READ" && <Profile push={props.history.push} username={username}/>}
+      {Mode === "READ" && <Profile replace={props.history.replace} username={username}/>}
       {Mode === "EDIT" && <ProfileEdit push={props.history.push} username={username}/>}
       {Mode === "READ" && <div className="mypage-container">
-      <div className="common-catergory">팔로우</div>
+      <div className="common-catergory">My Journey</div>
       <div className="common-journey">
-        {MyJour.map((journey, index) => {
+        {MyJourInfo.map((journey, index) => {
           return (
-            <JourneyThumb id={journey.id} name={journey.name} category={journey.category} accompany={journey.accompany} img={journey.img} key={index}/>
+            <JourneyThumb id={journey.id} name={journey.journeyName} type={journey.type} accompany={journey.accompany} author={journey.userName} authorId = {journey.userId} key={index}/>
           );
         })}
       </div>

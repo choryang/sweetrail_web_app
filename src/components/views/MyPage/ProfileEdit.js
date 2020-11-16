@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect} from "react";
 import Modal from 'react-modal';
 import {useSelector, useDispatch} from "react-redux";
 import { profileCancel, profileEditProcess } from "_actions/user_action";
@@ -11,26 +11,24 @@ function ProfileEdit(props) {
 
   const dispatch = useDispatch();
   var UserInfo = useSelector(state => state.user);
-  var UserId = UserInfo.userId;
-  var UserName = UserInfo.userName;
-  var JourneyType = UserInfo.journeyType;
-  var LifeStyle = UserInfo.lifeStyle;
+  const { UserId } = UserInfo.userId;
+  const [UserName, setUserName] = useState(UserInfo.userName);
+  const [JourneyType, setJourneyType] = useState(UserInfo.journeyType);
+  const [LifeStyle, setLifeStyle] = useState(UserInfo.lifeStyle);
 
   const [File, setFile] = useState(null);
+  const [Default, setDefault] = useState("false")
   const [EditImageVisible, setEditImageVisible] = useState(false);
-  const [DefaultFlag, setDefaultFlag] = useState(false);
-  const [ChangeFlag, setChangeFlag] = useState(false);
   const [ProfileImg, setProfileImg] = useState(UserInfo.userImg);
 
   const defaultImage = () => {
-    setDefaultFlag(true);
+    setDefault("true");
     setProfileImg(defaultImg);
     setEditImageVisible(false);
   }
 
   const onChangeImg = (e) => {
-    setChangeFlag(true);
-    setDefaultFlag(false);
+    setDefault("false");
     setFile(e.target.files[0]);
     setProfileImg(URL.createObjectURL(e.target.files[0]));
     setEditImageVisible(false);
@@ -51,27 +49,22 @@ function ProfileEdit(props) {
 
   const onClickBackProfile = () =>{
     dispatch(profileCancel());
+    props.push(`/mypage/${UserName}`);
   }
 
   const onChangeText = (e) => {
     if (e.currentTarget.name === "UserName") {
-      UserName = e.currentTarget.value;
+      setUserName(e.currentTarget.value);
     } else if (e.currentTarget.name === "LifeStyle") {
-      LifeStyle = e.currentTarget.value;
+      setLifeStyle(e.currentTarget.value);
     } else if (e.currentTarget.name === "JourneyType") {
-      JourneyType = e.currentTarget.value;
+      setJourneyType(e.currentTarget.value);
     }
   };
 
   const onClickEditProfile = () => {
     const formData = new FormData();
-    if (!DefaultFlag) {
-      if(ChangeFlag) {
-        formData.append("userImg", File);
-      }
-    }
-    formData.append("defaultFlag", DefaultFlag);
-    formData.append("userId", UserId);
+    formData.append("userImg", File);
     dispatch(profileEditProcess(formData));
     props.push(`/mypage/${UserName}`);
   }
@@ -112,7 +105,7 @@ function ProfileEdit(props) {
           </div>
           <div className="mypage-profile-contents">
             <div className="mypage-profile-first">
-              <input className="mypage-username edit"type="text" name="UserName" value={UserName} onChange={onChangeText}></input>
+              <input className="mypage-username edit" type="text" name="UserName" value={UserName} onChange={onChangeText}></input>
             </div>
             <div className="mypage-profile-others edit">
               <span className="mypage-profile-text">Journey Type</span>

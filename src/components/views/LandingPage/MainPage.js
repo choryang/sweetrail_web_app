@@ -16,14 +16,11 @@ function MainPage() {
 
   
   useEffect(() => {
+    dispatch(getUserInfo(UserInfo.userId));
     dispatch(journeyMain()).then((response) => {
       setPublicJour(response.payload);
     });
   }, []);
-  
-  useEffect(() => {
-    dispatch(getUserInfo(UserInfo.userId));
-  }, [UserInfo.userId]);
   
   return (
     <>

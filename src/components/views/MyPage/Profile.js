@@ -23,8 +23,10 @@ function Profile(props) {
   const [FollowVisible, setFollowVisible] = useState(false);
 
 
-  const onClickEdit = () => {
+  const onClickEdit = (e) => {
+    e.preventDefault();
     dispatch(profileEdit());
+    props.replace(`/mypage/${UserName}/profile`);
   }
 
   const openFollowModal = () => {

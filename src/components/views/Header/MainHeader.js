@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Modal from 'react-modal';
 import {useSelector, useDispatch} from "react-redux";
-import {setMyPage, logoutUser} from "_actions/user_action"
+import {setMyPage, profileCancel, logoutUser} from "_actions/user_action"
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import logo from "images/logo.png";
@@ -41,6 +41,9 @@ function MainHeader(props) {
   }
 
   const onClickMypage = () => {
+    if (UserInfo.profileMode === "EDIT") {
+      dispatch(profileCancel());
+    }
     dispatch(setMyPage());
     props.history.push(`/mypage/${UserInfo.userName}`)
   }

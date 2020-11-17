@@ -13,3 +13,4 @@ export const PROFILE_EDIT_PROCESS = "profile_edit_process"
 export const SET_MYPAGE_USER = "set_mypage_user";
 export const SET_MYPAGE_USER_ID = "set_mypage_user_id"
 export const SET_MYPAGE = "set_mypage"
+export const FOLLOW_CHECK = "follow_check"

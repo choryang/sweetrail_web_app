@@ -4,9 +4,13 @@ import {useSelector, useDispatch} from "react-redux";
 import { getUserInfo } from "_actions/user_action";
 import defaultImg from "images/user.png";
 import {FaTimes} from "react-icons/fa"
+import BlueBtn from "components/fragments/BlueBtn";
+import WhiteBtn from "components/fragments/WhiteBtn";
+import { getFollow } from "_actions/follow_action";
 import "css/modal.scss";
 import "css/common.scss";
 import "css/mypage.scss";
+
 
 function OtherProfile(props) {
 
@@ -20,6 +24,7 @@ function OtherProfile(props) {
   var LifeStyle = UserInfo.otherlifeStyle;
 
   const [FollowVisible, setFollowVisible] = useState(false);
+  const [IsFollow, setIsFollow] = useState(false);
   const dispatch = useDispatch();
 
   const openFollowModal = () => {
@@ -38,6 +43,11 @@ function OtherProfile(props) {
   }
 
   useEffect(() => {
+    const body = {
+      id: UserInfo.userId,
+      otherId: UserInfo.otheruserId
+    }
+    dispatch(getFollow(body)).then((response) => setIsFollow(response.payload.isFollow));
     dispatch(getUserInfo(UserInfo.otheruserId));
   }, []);
 
@@ -49,7 +59,7 @@ function OtherProfile(props) {
           <div className="mypage-profile-contents">
             <div className="mypage-profile-first">
               <span className="mypage-username">{UserName}</span>
-              <button className="blue-btn">팔로잉</button>
+              {IsFollow ? <BlueBtn onClick/> : <WhiteBtn onClick/>}
             </div>
             <div className="mypage-profile-others">
               <span className="mypage-profile-text follow" onClick={openFollowModal}>팔로워</span>

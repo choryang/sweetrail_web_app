@@ -318,31 +318,3 @@ $subgrey: #999999;
     background-color: #b57bff;
   }
 }
-
-.blue-btn {
-  height: 40px;
-  font-size: 16px;
-  font-weight: bold;
-  background-color: $mainblue;
-  border: 1px solid $mainblue;
-  color: $mainwhite;
-  border-radius: 8px;
-  padding: 0 15px;
-  margin: 5px 15px 0;
-  //box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  cursor: pointer;
-}
-
-.white-btn {
-  height: 40px;
-  font-size: 16px;
-  font-weight: bold;
-  background-color: $mainwhite;
-  border: 1px solid $mainblue;
-  color: $mainblue;
-  border-radius: 8px;
-  padding: 0 15px;
-  margin: 5px 15px 0;
-  //box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  cursor: pointer;
-}

@@ -12,15 +12,16 @@ import example2 from "images/mainbeach.jpg"
 function MainPage() {
   const [PublicJour, setPublicJour] = useState([]);
   const dispatch = useDispatch();
+  const userId = useSelector(state => state.user.userId);
   
 
   
   useEffect(() => {
-    
+    dispatch(getUserInfo(userId));
     dispatch(journeyMain()).then((response) => {
       setPublicJour(response.payload);
     });
-  }, []);
+  }, [userId]);
   
   return (
     <>

@@ -6,7 +6,7 @@ import defaultImg from "images/user.png";
 import {FaTimes} from "react-icons/fa"
 import BlueBtn from "components/fragments/BlueBtn";
 import WhiteBtn from "components/fragments/WhiteBtn";
-import { getFollow } from "_actions/follow_action";
+import { getFollow, setFollow } from "_actions/follow_action";
 import "css/modal.scss";
 import "css/common.scss";
 import "css/mypage.scss";
@@ -34,6 +34,14 @@ function OtherProfile(props) {
   const closeFollowModal = () => {
     setFollowVisible(false);
   }
+
+  const onClickSetFollow = () => {
+    const body = {
+      id: UserInfo.userId,
+      otherId: UserInfo.otheruserId
+    }
+    dispatch(setFollow(body)).then((response) => setIsFollow(response.payload.isFollow));
+  }
   
   if(ProfileImg === "default") {
     ProfileImg = defaultImg;
@@ -59,7 +67,7 @@ function OtherProfile(props) {
           <div className="mypage-profile-contents">
             <div className="mypage-profile-first">
               <span className="mypage-username">{UserName}</span>
-              {IsFollow ? <BlueBtn onClick/> : <WhiteBtn onClick/>}
+              {IsFollow ? <BlueBtn onClick/> : <WhiteBtn onClick={onClickSetFollow}/>}
             </div>
             <div className="mypage-profile-others">
               <span className="mypage-profile-text follow" onClick={openFollowModal}>팔로워</span>

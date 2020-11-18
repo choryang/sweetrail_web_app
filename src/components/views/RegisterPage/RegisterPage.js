@@ -44,7 +44,7 @@ function RegisterPage(props) {
       lifestyle: LifeStyle,
       journeytype: JourneyType,
     };
-
+  
     //dispatch를 이용해서 action을 날린다.
     dispatch(registerUser(body)).then((response) => {
       console.log(response.payload.registerSuccess);

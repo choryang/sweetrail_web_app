@@ -1,5 +1,5 @@
 import axios from "axios";
-import {FOLLOW_CHECK } from "_actions/types";
+import {FOLLOW_CHECK, SET_FOLLOWING } from "_actions/types";
 
 export function getFollow(dataToSubmit) {
   const request = axios
@@ -8,6 +8,17 @@ export function getFollow(dataToSubmit) {
 
   return {
     type: FOLLOW_CHECK,
+    payload: request,
+  };
+}
+
+export function setFollow(dataToSubmit) {
+  const request = axios
+    .post("/api/follow/set-follow", dataToSubmit)
+    .then((response) => response.data);
+
+  return {
+    type: SET_FOLLOWING,
     payload: request,
   };
 }

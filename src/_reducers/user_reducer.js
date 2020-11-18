@@ -47,19 +47,26 @@ export default function (state = initState, action) {
         ...state, 
         isAuth: action.payload.isAuth,
         userId: action.payload.userId,
-        userName: action.payload.userName,
-        journeyType: action.payload.journeyType,
-        lifeStyle: action.payload.lifeStyle,
-        userImg: action.payload.userImg,
       };
     
     case GET_USER_INFO:
-      return {
-        ...state,
-        otheruserImg: action.payload.userImg, 
-        otheruserName: action.payload.userName,
-        otherjourneyType: action.payload.journeyType, 
-        otherlifeStyle: action.payload.lifeStyle
+      if(state.otherUser){
+        return {
+          ...state,
+          otheruserImg: action.payload.userImg, 
+          otheruserName: action.payload.userName,
+          otherjourneyType: action.payload.journeyType, 
+          otherlifeStyle: action.payload.lifeStyle
+        }
+      }
+      else {
+        return {
+          ...state,
+          userImg: action.payload.userImg, 
+          userName: action.payload.userName,
+          journeyType: action.payload.journeyType, 
+          lifeStyle: action.payload.lifeStyle
+        }
       }
     
 

@@ -7,11 +7,11 @@ export default function (state = {}, action) {
           isFollow: action.payload.isFollow
      };
 
-     case SET_FOLLOWING:
-       return {
-         ...state,
-         isFollow: action.payload.isFollow
-       }
+    //  case SET_FOLLOWING:
+    //    return {
+    //      ...state,
+    //      isFollow: action.payload.isFollow
+    //    }
 
     default:
       return state;

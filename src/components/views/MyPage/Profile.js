@@ -1,12 +1,11 @@
-import React, {useEffect, useState} from "react";
-import Modal from 'react-modal';
+import React, {useState, useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
-import { profileEdit, profileCancel } from "_actions/user_action";
-import defaultImg from "images/user.png";
-import {FaTimes} from "react-icons/fa"
-import "css/modal.scss";
-import "css/common.scss";
+import { profileEdit } from "_actions/user_action";
 import "css/mypage.scss";
+import FollowerModal from "components/views/MyPage/FollowerModal";
+import FollowingModal from "components/views/MyPage/FollowingModal";
+import { countFollower, countFollowing } from "_actions/follow_action";
+
 
 function Profile(props) {
 
@@ -14,13 +13,17 @@ function Profile(props) {
   const dispatch = useDispatch();
   
   
-  var UserInfo = useSelector(state => state.user);
-  var ProfileImg = UserInfo.userImg;
-  var UserName = UserInfo.userName;
-  var JourneyType = UserInfo.journeyType;
-  var LifeStyle = UserInfo.lifeStyle;
+  const UserInfo = useSelector(state => state.user);
+ 
 
-  const [FollowVisible, setFollowVisible] = useState(false);
+  const [FollowingOpen, setFollowingOpen] = useState(false);
+  const [FollowerOpen, setFollowerOpen] = useState(false);
+  const [Following, setFollowing] = useState(0);
+  const [Follower, setFollower] = useState(0);
+  const ProfileImg = process.env.REACT_APP_IMAGE_URL + UserInfo.userImg;
+  const UserName = UserInfo.userName;
+  const JourneyType = UserInfo.journeyType;
+  const LifeStyle = UserInfo.lifeStyle;
 
 
   const onClickEdit = (e) => {
@@ -29,20 +32,11 @@ function Profile(props) {
     props.replace(`/mypage/${UserName}/profile`);
   }
 
-  const openFollowModal = () => {
-    setFollowVisible(true);
-  }
-
-  const closeFollowModal = () => {
-    setFollowVisible(false);
-  }
-  
-    if(ProfileImg === "default") {
-      ProfileImg = defaultImg;
-    }
-    else {
-      ProfileImg = process.env.REACT_APP_IMAGE_URL + ProfileImg;
-    }
+  useEffect(() => {
+    dispatch(countFollowing(UserInfo.userId)).then((response) => setFollowing(response.payload.count));
+    dispatch(countFollower(UserInfo.userId)).then((response) => setFollower(response.payload.count));
+  },[UserInfo.isAuth])
+    
 
   
   return (
@@ -55,32 +49,12 @@ function Profile(props) {
               <button className="mypage-profile-edit-btn" onClick={onClickEdit}>프로필편집</button>
             </div>
             <div className="mypage-profile-others">
-              <span className="mypage-profile-text follow" onClick={openFollowModal}>팔로워</span>
-              <Modal
-                isOpen={FollowVisible}
-                onRequestClose={closeFollowModal}
-                className="common-modal"
-                overlayClassName="common-modal-overlay"
-                contentLabel="Follow Modal"
-              >
-                <div className="common-modal-header">
-                  <span className="common-modal-title">팔로우</span>
-                  <span className="common-modal-close" onClick={closeFollowModal}><FaTimes /></span>
-                </div>
-                
-                <div className="modal-follow-container">
-                  <div className="modal-follow-item">
-                    <div className="modal-follow-user">
-                      <img className="follow-profile-img" src={defaultImg} alt="userprofile"/>
-                      <div className="follow-name">name</div>
-                    </div>
-                    <button className="blue-btn">팔로잉</button>
-                  </div>
-                </div>
-              </Modal>
-              <span className="mypage-profile-text margin">1000</span>
-              <span className="mypage-profile-text follow" onClick={openFollowModal}>팔로잉</span>
-              <span className="mypage-profile-text">1000</span>
+              <span className="mypage-profile-text follow" onClick={() => {setFollowerOpen(true)}}>팔로워</span>
+              <FollowerModal isOpen={FollowerOpen} close={() => {setFollowerOpen(false)}} userId={UserInfo.userId}/>
+              <span className="mypage-profile-text margin">{Follower}</span>
+              <span className="mypage-profile-text follow" onClick={() => {setFollowingOpen(true)}}>팔로잉</span>
+              <FollowingModal isOpen={FollowingOpen} close={() => {setFollowingOpen(false)}} userId={UserInfo.userId}/>
+              <span className="mypage-profile-text">{Following}</span>
             </div>
             <div className="mypage-profile-others">
               <span className="mypage-profile-text">Journey Type</span>

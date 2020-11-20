@@ -10,25 +10,8 @@ import {
   SET_MYPAGE, 
   GET_USER_INFO} from "_actions/types";
 
-const initState = {
-  userId: "",
-  userImg: "",
-  userName: "",
-  journeyType: "",
-  lifeStyle: "",
-  isLogin: false,
-  isAuth: false,
-  profileMode: "READ",
-  otherUser: false,
-  otheruserId: "",
-  otheruserImg: "",
-  otheruserName: "",
-  otherjourneyType: "",
-  otherlifeStyle: "",
-  
-}
 
-export default function (state = initState, action) {
+export default function (state = {}, action) {
   
   switch (action.type) {
     case LOGIN_USER:
@@ -47,6 +30,10 @@ export default function (state = initState, action) {
         ...state, 
         isAuth: action.payload.isAuth,
         userId: action.payload.userId,
+        userName: action.payload.userName,
+        userImg: action.payload.userImg,
+        journeyType: action.payload.journeyType,
+        lifeStyle: action.payload.lifeStyle,
       };
     
     case GET_USER_INFO:
@@ -59,15 +46,15 @@ export default function (state = initState, action) {
           otherlifeStyle: action.payload.lifeStyle
         }
       }
-      else {
-        return {
-          ...state,
-          userImg: action.payload.userImg, 
-          userName: action.payload.userName,
-          journeyType: action.payload.journeyType, 
-          lifeStyle: action.payload.lifeStyle
-        }
-      }
+      // else {
+      //   return {
+      //     ...state,
+      //     userImg: action.payload.userImg, 
+      //     userName: action.payload.userName,
+      //     journeyType: action.payload.journeyType, 
+      //     lifeStyle: action.payload.lifeStyle
+      //   }
+      // }
     
 
     case LOGOUt_USER:
@@ -92,7 +79,7 @@ export default function (state = initState, action) {
     case PROFILE_EDIT_PROCESS:
       return {
         ...state, 
-        userImg: action.payload.userImg,
+        userImg: action.request,
         profileMode: action.mode
       }
     

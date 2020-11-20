@@ -14,16 +14,9 @@ function MainHeader(props) {
 
   const dispatch = useDispatch();
   var UserInfo = useSelector(state => state.user);
-  var ProfileImg = UserInfo.userImg;
+  var ProfileImg = process.env.REACT_APP_IMAGE_URL + UserInfo.userImg;
   const [ProfileVisible, setProfileVisible] = useState(false);
-
   
-  if(ProfileImg === "default") {
-    ProfileImg = defaultImg;
-  }
-  else {
-    ProfileImg = process.env.REACT_APP_IMAGE_URL + ProfileImg;
-  }
   
 
   const closeProfileModal = () => {

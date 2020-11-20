@@ -6,6 +6,7 @@ import MainPage from "components/views/LandingPage/MainPage";
 import LoginPage from "components/views/LoginPage/LoginPage";
 import RegisterPage from "components/views/RegisterPage/RegisterPage";
 import MyPage from "components/views/MyPage/MyPage";
+import ProfileEdit from "components/views/MyPage/ProfileEdit";
 import OtherPage from "components/views/MyPage/OtherPage";
 import JourneyDetail from "components/views/Journey/JourneyDetail";
 import PathDetail from "components/views/Journey/Path"
@@ -25,7 +26,7 @@ function App() {
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/mypage/:username" component={User ? Auth(OtherPage, true) : Auth(MyPage, true)} />
-          <Route exact path="/mypage/:username/profile" component={Auth(MyPage, true)} />
+          <Route exact path="/mypage/:username/profile" component={Auth(ProfileEdit, true)} />
           <Route
             exact path="/journey/:id"
             component={Auth(JourneyDetail, true)}

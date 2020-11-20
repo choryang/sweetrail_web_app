@@ -17,7 +17,7 @@ function MainPage() {
 
   
   useEffect(() => {
-    dispatch(getUserInfo(userId));
+    //dispatch(getUserInfo(userId));
     dispatch(journeyMain()).then((response) => {
       setPublicJour(response.payload);
     });

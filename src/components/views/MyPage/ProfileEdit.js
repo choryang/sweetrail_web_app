@@ -1,8 +1,10 @@
 import React, { useState, useEffect} from "react";
 import Modal from 'react-modal';
+import {withRouter} from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
 import { profileCancel, profileEditProcess } from "_actions/user_action";
-import {FaTimes} from "react-icons/fa"
+import MainHeader from "components/views/Header/MainHeader";
+import {FaTimes} from "react-icons/fa";
 import defaultImg from "images/user.png";
 import "css/modal.scss";
 
@@ -19,11 +21,11 @@ function ProfileEdit(props) {
   const [File, setFile] = useState(null);
   const [Default, setDefault] = useState("false")
   const [EditImageVisible, setEditImageVisible] = useState(false);
-  const [ProfileImg, setProfileImg] = useState(UserInfo.userImg);
+  const [ProfileImg, setProfileImg] = useState(process.env.REACT_APP_IMAGE_URL + UserInfo.userImg);
 
   const defaultImage = () => {
     setDefault("true");
-    setProfileImg(defaultImg);
+    setProfileImg(process.env.REACT_APP_IMAGE_URL + `static/profile/default.png`);
     setEditImageVisible(false);
   }
 
@@ -49,7 +51,7 @@ function ProfileEdit(props) {
 
   const onClickBackProfile = () =>{
     dispatch(profileCancel());
-    props.push(`/mypage/${UserName}`);
+    props.history.push(`/mypage/${UserName}`);
   }
 
   const onChangeText = (e) => {
@@ -65,19 +67,14 @@ function ProfileEdit(props) {
   const onClickEditProfile = () => {
     const formData = new FormData();
     formData.append("userImg", File);
+    formData.append("userId", UserId);
     dispatch(profileEditProcess(formData));
-  }
-
-  
-  if (ProfileImg === "default") {
-    setProfileImg(defaultImg);
-  }
-  else if (ProfileImg === UserInfo.userImg){
-    setProfileImg(process.env.REACT_APP_IMAGE_URL + UserInfo.userImg);
+    props.history.push(`/mypage/${UserName}`);
   }
 
   return (
     <>
+    <MainHeader />
         <div className="mypage-info">
           <div className="mypage-profile-edit">
             <img className="mypage-profile-img edit" src={ProfileImg} alt="userprofile" />
@@ -124,6 +121,6 @@ function ProfileEdit(props) {
   );
 }
 
-export default ProfileEdit;
+export default withRouter(ProfileEdit);
 
  

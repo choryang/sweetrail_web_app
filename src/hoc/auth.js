@@ -9,12 +9,11 @@ export default function (SpecificComponent, option, adminRoute = null) {
   //true 어드민 유저만
   function AuthenticationCheck(props) {
     const dispatch = useDispatch();
-    const isAuth = useSelector(state => state.user.isAuth)
 
     useEffect(() => {
-      dispatch(auth()).then(() => {
+      dispatch(auth()).then((response) => {
         //로그인 하지 않은 상태
-        if (!isAuth) {
+        if (!response.payload.isAuth) {
           if (option) {
             return props.history.push("/login");
           }

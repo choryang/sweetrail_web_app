@@ -1,7 +1,15 @@
+$screen-md: 768px;
+
 $mainblue: #5aa2f8;
 $mainwhite: #ffffff;
 $maingrey: #e3eef5;
 $subgrey: #999999;
+
+@mixin mobile {
+  @media (max-width: $screen-md) {
+    @content;
+  }
+}
 
 .journey-detail-container {
   display: flex;
@@ -23,10 +31,11 @@ $subgrey: #999999;
       margin-right: 10px;
 
       .journey-detail-map {
-        width: 100%;
+        width: 95%;
         height: 300px;
         padding: 5px;
         margin-bottom: 10px;
+        margin-right: 10px;
       }
 
       .journey-detail-path-item-box {
@@ -78,10 +87,56 @@ $subgrey: #999999;
   }
 }
 
+@include mobile {
+  .journey-detail-container {
+    margin: 40px 10px 0;
+
+    .journey-detail-contents {
+      flex-direction: column;
+      width: 100%;
+
+      .journey-detail-path {
+        width: 100%;
+        margin-right: 0px;
+        margin-bottom: 10px;
+
+        .journey-detail-map {
+          width: 95%;
+          height: 200px;
+          margin: 0 auto 10px;
+        }
+
+        .journey-detail-path-item-box {
+          flex-direction: row;
+          height: 100px;
+        }
+      }
+
+      .journey-detail-info {
+        width: 90%;
+
+        .journey-detail-summary {
+          margin-top: 30px;
+          padding-left: 10px;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
 .journey-detail-title {
   width: 100%;
+  max-width: 1200px;
   position: relative;
+  margin: 0 auto;
   color: $mainwhite;
+  background: linear-gradient(
+    180deg,
+    #000000 0%,
+    rgba(255, 255, 255, 0) 99.99%,
+    #000000 100%
+  );
 
   img {
     width: 100%;
@@ -90,19 +145,101 @@ $subgrey: #999999;
     border-radius: 0 0 40px 40px;
   }
 
+  .overlay {
+    width: 100%;
+    height: 400px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 0%,
+      #222222 100%
+    );
+    border-radius: 0 0 40px 40px;
+  }
+
   .journey-detail-name {
     font-size: 64px;
     font-weight: bold;
     margin-bottom: 0;
     position: absolute;
-    top: 50%;
-    left: 5%;
+    bottom: 100px;
+    left: 50px;
   }
 
   .journey-detail-username {
-    font-size: 24px;
+    font-size: 20px;
     position: absolute;
-    top: 70%;
-    left: 5%;
+    bottom: 20px;
+    left: 50px;
+  }
+}
+
+@include mobile {
+  .journey-detail-title {
+    img {
+      height: 200px;
+    }
+
+    .overlay {
+      height: 200px;
+    }
+
+    .journey-detail-name {
+      font-size: 32px;
+      bottom: 50px;
+      left: 30px;
+    }
+
+    .journey-detail-username {
+      font-size: 15px;
+      bottom: 5px;
+      left: 30px;
+    }
+  }
+}
+
+.common-path-item {
+  display: flex;
+  align-items: center;
+  margin: 0 20px;
+  position: relative;
+
+  p {
+    font-weight: bold;
+    margin: 0 20px;
+  }
+
+  .common-path-pin {
+    width: 35px;
+    height: 50px;
+    margin: 10px 0;
+  }
+
+  .common-path-line {
+    width: 1px;
+    height: 60px;
+    border-left: 5px dotted $subgrey;
+    position: absolute;
+    top: 5px;
+    left: 16px;
+    z-index: -1;
+  }
+}
+
+@include mobile {
+  .common-path-item {
+    flex-direction: column;
+    margin: 0;
+
+    .common-path-line {
+      width: 100px;
+      height: 5px;
+      border-left: 0px;
+      border-bottom: 5px dotted $subgrey;
+      top: 50px;
+      left: 15px;
+    }
   }
 }

@@ -5,20 +5,19 @@ import {useDispatch} from "react-redux";
 import { withRouter, useParams } from "react-router-dom";
 import { journeyDetail } from "_actions/journey_action";
 import MainHeader from "components/views/Header/MainHeader";
-import userimg from "images/user.png";
 import pin from "images/pin.png";
 import "css/journey.scss";
 
 function JourneyDetail(props) {
 
   const { id } = useParams();
-  // const [JourInfo, setJourInfo] = useState({});
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(journeyDetail(id)).then((response) => {
-  //     setJourInfo(response.payload);
-  //   });
-  // }, []);
+  const [JourInfo, setJourInfo] = useState({});
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(journeyDetail(id)).then((response) => {
+      setJourInfo(response.payload);
+    });
+  }, []);
 
   const onClickGoPath = () => {
     props.history.push(`/journey/${id}/path/1`);
@@ -39,17 +38,6 @@ function JourneyDetail(props) {
       },
       zoom: 11
     };
-
-  const JourInfo = {
-    id: 1,
-    name: "Still Stand Tall1",
-    username: "choryang",
-    category: "geek",
-    accompany: "",
-    img: "https://sothebysrealty.gr/wp-content/uploads/2016/11/Santorini-sunset-at-dawn-Greece-Sothebys-International-Realty.jpg",
-    summary: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pharetra nisl, scelerisque commodo nisl, in. Fusce ac ut lacus aenean a scelerisque. Pellentesque et elit cursus elementum amet. Augue ornare in in imperdiet ac lacus. Magna feugiat ornare tristique nisi quis auctor ullamcorper. Quam faucibus massa diam leo nibh eleifend eleifend id. Sollicitudin netus lobortis imperdiet nunc venenatis laoreet suspendisse diam. Felis elit et nibh habitant. Sit ante lorem sit justo enim, a lorem adipiscing quis.
-    Ac vel ipsum tempus hendrerit vitae diam. Eget quam nam amet, dictumst vel euismod lacus dolor. Eget enim massa sagittis, massa. A sem sapien vulputate amet diam diam orci lobortis pulvinar. Ut sed est aliquam amet elementum pellentesque felis pharetra. Et massa tristique quis amet leo.`,
-  }
 
   const places = [
     {
@@ -127,42 +115,6 @@ function JourneyDetail(props) {
       id: 1,
       path: "https://sothebysrealty.gr/wp-content/uploads/2016/11/Santorini-sunset-at-dawn-Greece-Sothebys-International-Realty.jpg",
     },
-    {
-      id: 2,
-      path: "https://sothebysrealty.gr/wp-content/uploads/2016/11/Santorini-sunset-at-dawn-Greece-Sothebys-International-Realty.jpg",
-    },
-    {
-      id: 3,
-      path: "https://sothebysrealty.gr/wp-content/uploads/2016/11/Santorini-sunset-at-dawn-Greece-Sothebys-International-Realty.jpg",
-    },
-    {
-      id: 4,
-      path: "https://sothebysrealty.gr/wp-content/uploads/2016/11/Santorini-sunset-at-dawn-Greece-Sothebys-International-Realty.jpg",
-    },
-    {
-      id: 5,
-      path: "https://sothebysrealty.gr/wp-content/uploads/2016/11/Santorini-sunset-at-dawn-Greece-Sothebys-International-Realty.jpg",
-    },
-    {
-      id: 6,
-      path: "https://sothebysrealty.gr/wp-content/uploads/2016/11/Santorini-sunset-at-dawn-Greece-Sothebys-International-Realty.jpg",
-    },
-    {
-      id: 7,
-      path: "https://sothebysrealty.gr/wp-content/uploads/2016/11/Santorini-sunset-at-dawn-Greece-Sothebys-International-Realty.jpg",
-    },
-    {
-      id: 8,
-      path: "https://sothebysrealty.gr/wp-content/uploads/2016/11/Santorini-sunset-at-dawn-Greece-Sothebys-International-Realty.jpg",
-    },
-    {
-      id: 9,
-      path: "https://sothebysrealty.gr/wp-content/uploads/2016/11/Santorini-sunset-at-dawn-Greece-Sothebys-International-Realty.jpg",
-    },
-    {
-      id: 10,
-      path: "https://s23514.pcdn.co/wp-content/uploads/2018/06/reasons_to_visit_santorini-1140x1710.jpg",
-    },
   ]
 
   return (
@@ -170,17 +122,17 @@ function JourneyDetail(props) {
       <MainHeader />
      
         <div className="journey-detail-title">
-          <img src={JourInfo.img} alt="title" />
-          <p className="journey-detail-name">{JourInfo.name}</p>
-          <p className="journey-detail-username">Created by {JourInfo.username}</p>
+          <img src={JourInfo.image} alt="title" />
+          <div className="overlay"></div>
+          <p className="journey-detail-name">{JourInfo.journeyName}</p>
+          <p className="journey-detail-username">Created by {JourInfo.userName}</p>
         </div>
         <div className="journey-detail-container">
           <div className="journey-detail-catergory common-grey-box ">
             <p>
-              <span>Category: </span>
-              <span>카테고리</span>
+              <span style={{fontWeight: "bold"}}>Category: </span>
+              <span className="common-category-badge yellow">{JourInfo.type}</span>
             </p>
-            <span>여행기간: 30일</span>
           </div>
           <div className="journey-detail-contents">
             <div className="journey-detail-path">

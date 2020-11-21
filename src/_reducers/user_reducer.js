@@ -79,7 +79,7 @@ export default function (state = {}, action) {
     case PROFILE_EDIT_PROCESS:
       return {
         ...state, 
-        userImg: action.request,
+        userImg: action.payload.userImg,
         profileMode: action.mode
       }
     

@@ -185,3 +185,29 @@ $subgrey: #999999;
     }
   }
 }
+
+.mypage-tab {
+  overflow: hidden;
+
+  button {
+    background-color: $mainwhite;
+    width: calc(100% / 3);
+    float: left;
+    border: 1px solid $mainwhite;
+    border-bottom: 3px solid #1c183d;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    margin: 0 0 10px;
+
+    &.active {
+      color: $mainblue;
+      border-bottom: 3px solid $mainblue;
+    }
+  }
+}
+
+.tab-content {
+  display: none;
+}

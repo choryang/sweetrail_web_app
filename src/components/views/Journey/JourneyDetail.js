@@ -6,18 +6,22 @@ import { withRouter, useParams } from "react-router-dom";
 import { journeyDetail } from "_actions/journey_action";
 import MainHeader from "components/views/Header/MainHeader";
 import pin from "images/pin.png";
+import mainboat from "images/mainboat.png"
 import "css/journey.scss";
 
 function JourneyDetail(props) {
 
   const { id } = useParams();
   const [JourInfo, setJourInfo] = useState({});
+  const [HeaderImg, setHeaderImg] = useState("");
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(journeyDetail(id)).then((response) => {
       setJourInfo(response.payload);
     });
+    //setHeaderImg(process.env.REACT_APP_IMAGE_URL + JourInfo.image);
   }, []);
+
 
   const onClickGoPath = () => {
     props.history.push(`/journey/${id}/path/1`);
@@ -113,8 +117,8 @@ function JourneyDetail(props) {
   const images = [
     {
       id: 1,
-      path: "https://sothebysrealty.gr/wp-content/uploads/2016/11/Santorini-sunset-at-dawn-Greece-Sothebys-International-Realty.jpg",
-    },
+      path: process.env.REACT_APP_IMAGE_URL + JourInfo.image
+    }
   ]
 
   return (
@@ -122,7 +126,7 @@ function JourneyDetail(props) {
       <MainHeader />
      
         <div className="journey-detail-title">
-          <img src={JourInfo.image} alt="title" />
+          <img src={JourInfo.image === undefined ? mainboat : process.env.REACT_APP_IMAGE_URL + JourInfo.image} alt="title" />
           <div className="overlay"></div>
           <p className="journey-detail-name">{JourInfo.journeyName}</p>
           <p className="journey-detail-username">Created by {JourInfo.userName}</p>

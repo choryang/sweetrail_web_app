@@ -79,12 +79,13 @@ export function profileEditProcess(formData) {
       "content-type": "multipart/form-data"
     }
   };
+
   const request = axios.post("/api/user/profile-upload", formData, config)
   .then((response) => response.data);
 
   return {
     type: PROFILE_EDIT_PROCESS,
-    userImg: request,
+    payload: request,
     mode: "READ"
   };
 }

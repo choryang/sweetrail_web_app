@@ -34,7 +34,7 @@ function OtherPage(props){
         <div className="common-journey">
           {MyJourInfo.map((journey, index) => {
             return (
-              <JourneyThumb id={journey.id} name={journey.journeyName} type={journey.type} accompany={journey.accompany} author={journey.userName} authorId = {journey.userId} key={index}/>
+              <JourneyThumb id={journey.id} name={journey.journeyName} type={journey.type} accompany={journey.accompany} author={journey.userName} authorId = {journey.userId} img={journey.image} key={index}/>
             );
           })}
         </div>

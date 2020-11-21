@@ -5,6 +5,7 @@ import "css/mypage.scss";
 import FollowerModal from "components/views/MyPage/FollowerModal";
 import FollowingModal from "components/views/MyPage/FollowingModal";
 import { countFollower, countFollowing } from "_actions/follow_action";
+import defaultImg from "images/user.png";
 
 
 function Profile(props) {
@@ -42,7 +43,7 @@ function Profile(props) {
   return (
     <>
         <div className="mypage-info">
-          <img className="mypage-profile-img" src={ProfileImg} alt="userprofile" />
+          <img className="mypage-profile-img" src={ UserInfo.userImg ? ProfileImg : defaultImg} alt="userprofile" />
           <div className="mypage-profile-contents">
             <div className="mypage-profile-first">
               <span className="mypage-username">{UserName}</span>

@@ -25,7 +25,7 @@ function ProfileEdit(props) {
 
   const defaultImage = () => {
     setDefault("true");
-    setProfileImg(process.env.REACT_APP_IMAGE_URL + `static/profile/default.png`);
+    setProfileImg(process.env.REACT_APP_IMAGE_URL + `image/profile/default.png`);
     setEditImageVisible(false);
   }
 
@@ -71,6 +71,12 @@ function ProfileEdit(props) {
     dispatch(profileEditProcess(formData));
     props.history.push(`/mypage/${UserName}`);
   }
+
+  useEffect(() => {
+    return () => {
+      
+    }
+  }, [])
 
   return (
     <>

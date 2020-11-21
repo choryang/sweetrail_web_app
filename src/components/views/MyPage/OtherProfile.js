@@ -9,6 +9,7 @@ import FollowingModal from "components/views/MyPage/FollowingModal";
 import "css/modal.scss";
 import "css/common.scss";
 import "css/mypage.scss";
+import defaultImg from "images/user.png";
 
 
 
@@ -55,7 +56,7 @@ function OtherProfile(props) {
   return (
     <>
         <div className="mypage-info">
-          <img className="mypage-profile-img" src={ProfileImg} alt="userprofile" />
+          <img className="mypage-profile-img" src={UserInfo.userImg ? ProfileImg : defaultImg} alt="userprofile" />
           <div className="mypage-profile-contents">
             <div className="mypage-profile-first">
               <span className="mypage-username">{UserName}</span>

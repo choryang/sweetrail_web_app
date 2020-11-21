@@ -12,6 +12,8 @@ function JourneyThumb(props) {
     props.history.push(`/journey/${props.id}`);
   }
 
+  const journeyImg = process.env.REACT_APP_IMAGE_URL + props.img;
+
   const otherUserPage = () => {
     if (props.authorId !== UserInfo.userId){
       dispatch(setMypageUserId(props.authorId));
@@ -21,7 +23,7 @@ function JourneyThumb(props) {
   
   return (
     <div className="common-journey-item">
-      <img src="https://sothebysrealty.gr/wp-content/uploads/2016/11/Santorini-sunset-at-dawn-Greece-Sothebys-International-Realty.jpg" alt="example" onClick={onClick}/>
+      <img src={journeyImg} alt="example" onClick={onClick}/>
       <span className="common-category-badge yellow">{props.type}</span>
       <div className="journey-info">
         <p className="journey-info-title" onClick={onClick}>{props.name}</p>

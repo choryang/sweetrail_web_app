@@ -38,7 +38,12 @@ function MainHeader(props) {
       dispatch(profileCancel());
     }
     dispatch(setMyPage());
-    props.history.push(`/mypage/${UserInfo.userName}`)
+    props.history.push(`/mypage/${UserInfo.userName}`);
+  }
+
+  const onClickScrap = () => {
+    dispatch(setMyPage());
+    props.history.push(`/mypage/${UserInfo.userName}/scrap`);
   }
 
 
@@ -58,7 +63,7 @@ function MainHeader(props) {
     <div className="common-header-container">
       <div className="common-header">
         <Link to={"/main"}><img className="logo" src={logo} alt="logo"/></Link>
-        <img className="user" src={ProfileImg} alt="userprofile" onClick={toggleProfileModal}/>
+        <img className="user" src={UserInfo.userImg ? ProfileImg : defaultImg} alt="userprofile" onClick={toggleProfileModal}/>
       </div>
         <Modal
           isOpen={ProfileVisible}
@@ -69,7 +74,7 @@ function MainHeader(props) {
         >
           <ul className="modal-profile-drop-contents">
             <li><div onClick={onClickMypage}>마이페이지</div></li>
-            <li><Link to={"/mypage"}><div>스크랩</div></Link></li>
+            <li><div onClick={onClickScrap}>스크랩</div></li>
             <li><div onClick={onClickLogout}>로그아웃</div></li>
           </ul>
         </Modal>

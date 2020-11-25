@@ -1,3 +1,16 @@
+$screen-md: 768px;
+
+$mainblue: #5aa2f8;
+$mainwhite: #ffffff;
+$maingrey: #e3eef5;
+$subgrey: #999999;
+
+@mixin mobile {
+  @media (max-width: $screen-md) {
+    @content;
+  }
+}
+
 .path-detail-container {
   display: flex;
   width: 100%;
@@ -6,8 +19,14 @@
   padding: 0;
 
   .path-detail-left {
+    display: block;
     width: 30%;
     height: 90vh;
+    background-color: $mainwhite;
+
+    .close-mark {
+      display: none;
+    }
 
     .path-detail-info {
       padding: 10px;
@@ -31,5 +50,50 @@
   .path-detail-map {
     width: 70%;
     height: 90vh;
+
+    .mobile-map-button {
+      display: none;
+    }
+  }
+}
+
+@include mobile {
+  .path-detail-container {
+    position: relative;
+
+    .path-detail-left {
+      &.sidebar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 80%;
+        height: 100vh;
+        z-index: 1;
+      }
+
+      .close-mark {
+        display: block;
+        float: right;
+        padding: 10px;
+      }
+
+      .path-detail-pin-box {
+        height: 100vh;
+      }
+    }
+
+    .path-detail-map {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+
+      .mobile-map-button {
+        display: block;
+        position: absolute;
+        bottom: 30px;
+        right: 50%;
+        transform: translate(50%, -50%);
+      }
+    }
   }
 }

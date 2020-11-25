@@ -40,12 +40,14 @@ function MyPage(props){
 
   useEffect(() => {
     if (scrap === "scrap") {
-      document.getElementById("scrap").style.display = "block";
-      document.getElementsByName("scrap")[0].className += " active";
+      // document.getElementById("scrap").style.display = "block";
+      // document.getElementsByName("scrap")[0].className += " active";
+      document.getElementsByName("scrap")[0].click();
     }
     else {
-      document.getElementById("public").style.display = "block";
-      document.getElementsByName("public")[0].className += " active";
+      // document.getElementById("public").style.display = "block";
+      // document.getElementsByName("public")[0].className += " active";
+      document.getElementsByName("public")[0].click();
     }
     dispatch(journeyMypage(id)).then((response) => {
       setMyJourInfo(response.payload);
@@ -57,7 +59,7 @@ function MyPage(props){
   return (
     <>
       <MainHeader />
-      <Profile replace={props.history.replace} username={username}/>
+      <Profile push={props.history.push} username={username}/>
       <div className="mypage-container">
       <div className="mypage-tab">
         <button className="common-catergory" name="public" onClick={openTab}>공개</button>

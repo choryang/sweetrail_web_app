@@ -17,9 +17,8 @@ export default function (state = {}, action) {
     case LOGIN_USER:
       return { 
         ...state,
-        userId: action.payload.userId,
         isAuth: true, 
-        isLogin: true
+        isLogin: action.payload.isLogin
        };
 
     case REGISTER_USER:

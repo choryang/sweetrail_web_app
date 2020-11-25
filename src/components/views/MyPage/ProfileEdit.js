@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from "react";
+import axios from "axios";
 import Modal from 'react-modal';
 import {withRouter} from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
@@ -7,6 +8,8 @@ import MainHeader from "components/views/Header/MainHeader";
 import {FaTimes} from "react-icons/fa";
 import defaultImg from "images/user.png";
 import "css/modal.scss";
+import { NextButton } from "nuka-carousel";
+
 
 
 function ProfileEdit(props) {
@@ -19,7 +22,8 @@ function ProfileEdit(props) {
   const [LifeStyle, setLifeStyle] = useState(UserInfo.lifeStyle);
 
   const [File, setFile] = useState(null);
-  const [Default, setDefault] = useState("false")
+  const [Default, setDefault] = useState(false);
+  const [ImgUrl, setImgUrl] = useState("default");
   const [EditImageVisible, setEditImageVisible] = useState(false);
   const [ProfileImg, setProfileImg] = useState(process.env.REACT_APP_IMAGE_URL + UserInfo.userImg);
 
@@ -64,19 +68,28 @@ function ProfileEdit(props) {
     }
   };
 
-  const onClickEditProfile = () => {
-    const formData = new FormData();
-    formData.append("userImg", File);
-    formData.append("userId", UserId);
-    dispatch(profileEditProcess(formData));
-    props.history.push(`/mypage/${UserName}`);
+  function onClickEditProfile () {
+    // const formData = new FormData();
+    // formData.append("userImg", File);
+    // formData.append("userId", UserInfo.userId);
+    // const config = {
+    //   headers: {
+    //     "content-type": "multipart/form-data"
+    //   }
+    // };
+    // axios.post("/api/user/profile-upload", formData, config)
+    // .then(response => response.data );
+    let body = {
+      id: UserInfo.userId
+    }
+    dispatch(profileEditProcess(body));
+    
+    // props.history.push(`/mypage/${UserName}`);
   }
 
-  useEffect(() => {
-    return () => {
-      
-    }
-  }, [])
+  // function setProfile (path) {
+    
+  // }
 
   return (
     <>
@@ -98,7 +111,7 @@ function ProfileEdit(props) {
               </div>
               <div className="common-modal-header">
                 <span className="common-modal-title blue" onClick={uploadImage}>사진 업로드</span>
-                <input type="file" name="userImg" id="profile" hidden="true" onChange={onChangeImg}></input>
+                <input type="file" name="userImg" id="profile" hidden={true} onChange={onChangeImg}></input>
               </div>
               <div className="common-modal-header">
                 <span className="common-modal-title red" onClick={defaultImage}>기본 이미지로 변경</span>

@@ -73,14 +73,9 @@ export function profileCancel(){
   }
 }
 
-export function profileEditProcess(formData) {
-  const config = {
-    headers: {
-      "content-type": "multipart/form-data"
-    }
-  };
+export function profileEditProcess(dataToSubmit) {
 
-  const request = axios.post("/api/user/profile-upload", formData, config)
+  const request = axios.post("/api/user/profile", dataToSubmit)
   .then((response) => response.data);
 
   return {

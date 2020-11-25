@@ -211,3 +211,17 @@ $subgrey: #999999;
 .tab-content {
   display: none;
 }
+
+@include mobile {
+  .mypage-tab {
+    button {
+      padding: 5px;
+      font-size: 14px;
+
+      &.active {
+        color: $mainblue;
+        border-bottom: 3px solid $mainblue;
+      }
+    }
+  }
+}

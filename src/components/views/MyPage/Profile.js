@@ -30,7 +30,7 @@ function Profile(props) {
   const onClickEdit = (e) => {
     e.preventDefault();
     dispatch(profileEdit());
-    props.replace(`/mypage/${UserName}/profile`);
+    props.push(`/profile-edit`);
   }
 
   useEffect(() => {

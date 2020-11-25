@@ -26,7 +26,7 @@ function App() {
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/mypage/:username/:scrap?" component={User ? Auth(OtherPage, true) : Auth(MyPage, true)} />
-          <Route exact path="/mypage/:username/profile" component={Auth(ProfileEdit, true)} />
+          <Route exact path="/profile-edit" component={Auth(ProfileEdit, true)} />
           <Route
             exact path="/journey/:id"
             component={Auth(JourneyDetail, true)}

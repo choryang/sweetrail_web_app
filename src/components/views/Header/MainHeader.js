@@ -63,7 +63,7 @@ function MainHeader(props) {
     <div className="common-header-container">
       <div className="common-header">
         <Link to={"/main"}><img className="logo" src={logo} alt="logo"/></Link>
-        <img className="user" src={UserInfo.userImg ? ProfileImg : defaultImg} alt="userprofile" onClick={toggleProfileModal}/>
+        <img className="user" src={UserInfo.userImg ? ProfileImg : defaultImg} alt="user profile" onClick={toggleProfileModal}/>
       </div>
         <Modal
           isOpen={ProfileVisible}

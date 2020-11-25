@@ -27,11 +27,9 @@ function JourneyDetail(props) {
     props.history.push(`/journey/${id}/path/1`);
   }
 
-  const AnyReactComponent = ({ text }) => {
+  const AnyReactComponent = () => {
     return (
-      
-        <div>{text}</div>
-      
+      <img style={{width: "20px"}} src={pin} alt="pin" />
     );
   };
   
@@ -149,14 +147,13 @@ function JourneyDetail(props) {
                     <AnyReactComponent
                       lat={37.531706}
                       lng={127.066676}
-                      text="My Marker"
                     />
                   </GoogleMapReact>
                 </div>
                 <div className="journey-detail-path-item-box">
                 {places.map((place) => {
                   return(
-                  <div className="common-path-item">
+                  <div className="common-path-item mobile">
                     <img className="common-path-pin" src={pin} alt="pin" />
                     <p>{place.name}</p>
                     <div className="common-path-line"></div>

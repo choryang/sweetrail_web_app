@@ -3,7 +3,7 @@ import {useSelector, useDispatch} from "react-redux";
 import { getUserInfo } from "_actions/user_action";
 import BlueBtn from "components/fragments/BlueBtn";
 import WhiteBtn from "components/fragments/WhiteBtn";
-import { getFollow, setFollow, unFollow } from "_actions/follow_action";
+import { getFollow, setFollow, unFollow, countFollower, countFollowing } from "_actions/follow_action";
 import FollowerModal from "components/views/MyPage/FollowerModal";
 import FollowingModal from "components/views/MyPage/FollowingModal";
 import "css/modal.scss";
@@ -20,6 +20,8 @@ function OtherProfile(props) {
   const [IsFollow, setIsFollow] = useState(false);
   const [FollowingOpen, setFollowingOpen] = useState(false);
   const [FollowerOpen, setFollowerOpen] = useState(false);
+  const [Following, setFollowing] = useState(0);
+  const [Follower, setFollower] = useState(0);
   const ProfileImg = process.env.REACT_APP_IMAGE_URL + UserInfo.userImg;
   const UserName = UserInfo.otheruserName;
   const JourneyType = UserInfo.otherjourneyType;
@@ -50,6 +52,8 @@ function OtherProfile(props) {
 
   useEffect(() => {
     dispatch(getFollow(body)).then((response) => setIsFollow(response.payload.isFollow));
+    dispatch(countFollowing(UserInfo.otheruserId)).then((response) => setFollowing(response.payload.count));
+    dispatch(countFollower(UserInfo.otheruserId)).then((response) => setFollower(response.payload.count));
     dispatch(getUserInfo(UserInfo.otheruserId));
   }, []);
 
@@ -63,12 +67,12 @@ function OtherProfile(props) {
               {IsFollow ? <BlueBtn onClick={onClickSetFollow}/> : <WhiteBtn onClick={onClickSetFollow}/>}
             </div>
             <div className="mypage-profile-others">
-            <span className="mypage-profile-text follow" onClick={() => {setFollowerOpen(true)}}>팔로워</span>
-              <FollowerModal isOpen={FollowerOpen} close={() => {setFollowerOpen(false)}} userId={UserInfo.userId}/>
-              <span className="mypage-profile-text margin">1000</span>
+              <span className="mypage-profile-text follow" onClick={() => {setFollowerOpen(true)}}>팔로워</span>
+              <FollowerModal isOpen={FollowerOpen} close={() => {setFollowerOpen(false)}} userId={UserInfo.otheruserId}/>
+              <span className="mypage-profile-text margin">{Follower}</span>
               <span className="mypage-profile-text follow" onClick={() => {setFollowingOpen(true)}}>팔로잉</span>
-              <FollowingModal isOpen={FollowingOpen} close={() => {setFollowingOpen(false)}} userId={UserInfo.userId}/>
-              <span className="mypage-profile-text">1000</span>
+              <FollowingModal isOpen={FollowingOpen} close={() => {setFollowingOpen(false)}} userId={UserInfo.otheruserId}/>
+              <span className="mypage-profile-text">{Following}</span>
             </div>
             <div className="mypage-profile-others">
               <span className="mypage-profile-text">Journey Type</span>

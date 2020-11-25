@@ -1,6 +1,15 @@
+$screen-md: 768px;
+
 $mainblue: #5aa2f8;
 $mainwhite: #ffffff;
 $maingrey: #e3eef5;
+$subgrey: #999999;
+
+@mixin mobile {
+  @media (max-width: $screen-md) {
+    @content;
+  }
+}
 
 .background {
   background-image: url("../images/mainboat.png");
@@ -81,5 +90,11 @@ $maingrey: #e3eef5;
 
   &:focus {
     border: 1px solid $mainblue;
+  }
+}
+
+@include mobile {
+  .background {
+    background-image: none;
   }
 }

@@ -69,27 +69,20 @@ function ProfileEdit(props) {
   };
 
   function onClickEditProfile () {
-    // const formData = new FormData();
-    // formData.append("userImg", File);
-    // formData.append("userId", UserInfo.userId);
-    // const config = {
-    //   headers: {
-    //     "content-type": "multipart/form-data"
-    //   }
-    // };
-    // axios.post("/api/user/profile-upload", formData, config)
-    // .then(response => response.data );
-    let body = {
-      id: UserInfo.userId
-    }
-    dispatch(profileEditProcess(body));
-    
-    // props.history.push(`/mypage/${UserName}`);
-  }
+    const formData = new FormData();
+    formData.append("userImg", File);
+    formData.append("userId", UserInfo.userId);
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data"
+      }
+    };
 
-  // function setProfile (path) {
+    axios.post("/api/user/profile-upload", formData, config)
+    .then(response => response.data );
     
-  // }
+    props.history.push(`/mypage/${UserName}`);
+  }
 
   return (
     <>

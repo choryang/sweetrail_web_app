@@ -1,5 +1,5 @@
 import axios from "axios";
-import { JOURNEY_MAIN, JOURNEY_MYPAGE, JOURNEY_DETAIL, JOURNEY_OTHERPAGE } from "_actions/types";
+import { JOURNEY_MAIN, JOURNEY_MYPAGE, JOURNEY_DETAIL, JOURNEY_OTHERPAGE, FOLLOW_JOURNEY } from "_actions/types";
 export function journeyMain() {
   const request = axios
     .get("/api/journey/main")
@@ -42,4 +42,15 @@ export function journeyDetail(id) {
     type: JOURNEY_DETAIL,
     payload: request,
   };
+}
+
+export function followJourney(id) {
+  const request = axios
+  .get(`/api/journey/follow-journey/${id}`)
+  .then((response) => response.data);
+
+  return {
+    type: FOLLOW_JOURNEY,
+    payload: request
+  }
 }

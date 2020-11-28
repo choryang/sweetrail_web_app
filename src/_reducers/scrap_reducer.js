@@ -1,10 +1,10 @@
-import { FOLLOW_CHECK } from "_actions/types";
+import { SCRAP_CHECK } from "_actions/types";
 export default function (state = {}, action) {
   switch (action.type) {
-    case FOLLOW_CHECK:
+    case SCRAP_CHECK:
       return { 
           ...state,
-          isFollow: action.payload.isFollow
+          isScrap: action.payload.isScrap
      };
 
     default:

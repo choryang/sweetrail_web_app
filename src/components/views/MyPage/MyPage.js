@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
-import { withRouter, useLocation, useParams } from "react-router-dom";
+import { withRouter, useParams } from "react-router-dom";
 import {journeyMypage} from "_actions/journey_action";
-import {auth} from "_actions/user_action"
+import {getScrapList} from "_actions/scrap_action";
 import MainHeader from "components/views/Header/MainHeader";
 import JourneyThumb from "components/views/Journey/JourneyThumb";
 import Profile from "components/views/MyPage/Profile";
-import ProfileEdit from "components/views/MyPage/ProfileEdit";
 import "css/modal.scss";
 import "css/common.scss";
 
@@ -19,6 +18,7 @@ function MyPage(props){
   const { username } = useParams();
   const { scrap } = useParams();
   const [MyJourInfo, setMyJourInfo] = useState([]);
+  const [ScrapJourInfo, setScrapJourInfo] = useState([]);
   const dispatch = useDispatch();
 
   const openTab = (e) => {
@@ -40,17 +40,16 @@ function MyPage(props){
 
   useEffect(() => {
     if (scrap === "scrap") {
-      // document.getElementById("scrap").style.display = "block";
-      // document.getElementsByName("scrap")[0].className += " active";
       document.getElementsByName("scrap")[0].click();
     }
     else {
-      // document.getElementById("public").style.display = "block";
-      // document.getElementsByName("public")[0].className += " active";
       document.getElementsByName("public")[0].click();
     }
     dispatch(journeyMypage(id)).then((response) => {
       setMyJourInfo(response.payload);
+    });
+    dispatch(getScrapList(id)).then((response) => {
+      setScrapJourInfo(response.payload);
     });
   },[isAuth]);
 
@@ -81,7 +80,7 @@ function MyPage(props){
         })}
       </div>
       <div id="scrap" className="common-journey tab-content">
-        {MyJourInfo.filter((MyJourInfo) => MyJourInfo.sharedFlag).map((journey, index) => {
+        {ScrapJourInfo.map((journey, index) => {
           return (
             <JourneyThumb id={journey.id} name={journey.journeyName} type={journey.type} accompany={journey.accompany} author={journey.userName} authorId = {journey.userId} img={journey.image} key={index}/>
           );

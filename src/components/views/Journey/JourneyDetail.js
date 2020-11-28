@@ -1,25 +1,36 @@
 import React, {useEffect, useState} from "react";
 import GoogleMapReact from 'google-map-react';
 import Carousel from 'nuka-carousel';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { withRouter, useParams } from "react-router-dom";
 import { journeyDetail } from "_actions/journey_action";
+import { getScrap, setScrap, unScrap } from "_actions/scrap_action"
 import MainHeader from "components/views/Header/MainHeader";
+import ScrapBtn from "components/fragments/ScrapBtn";
+import UnscrapBtn from "components/fragments/UnscrapBtn";
 import pin from "images/pin.png";
-import mainboat from "images/mainboat.png"
+import mainboat from "images/mainboat.png";
 import "css/journey.scss";
 
 function JourneyDetail(props) {
 
   const { id } = useParams();
+  var userId = useSelector(state => state.user.userId);
+
   const [JourInfo, setJourInfo] = useState({});
+  const [IsScrap, setIsScrap] = useState(false);
   const dispatch = useDispatch();
+  const body = {
+    id: userId,
+    journeyId: id
+  }
+
   useEffect(() => {
+    dispatch(getScrap(body)).then((response) => setIsScrap(response.payload.isScrap));
     dispatch(journeyDetail(id)).then((response) => {
       setJourInfo(response.payload);
     });
   }, []);
-
 
   const onClickGoPath = () => {
     props.history.push(`/journey/${id}/path/1`);
@@ -30,6 +41,17 @@ function JourneyDetail(props) {
       <img style={{width: "20px"}} src={pin} alt="pin" />
     );
   };
+
+  const onClickSetScrap = () => {
+    var action;
+    if(!IsScrap) {
+      action = setScrap(body)
+    }
+    else {
+      action = unScrap(body)
+    }
+    dispatch(action).then((response) => setIsScrap(response.payload.isScrap));
+  }
   
     const defaultProps = {
       center: {
@@ -122,9 +144,9 @@ function JourneyDetail(props) {
       <MainHeader />
      
         <div className="journey-detail-title">
-          <img src={JourInfo.image === undefined ? mainboat : process.env.REACT_APP_IMAGE_URL + JourInfo.image} alt="title" />
+          <img className="title-image" src={JourInfo.image === undefined ? mainboat : process.env.REACT_APP_IMAGE_URL + JourInfo.image} alt="title" />
           <div className="overlay"></div>
-          <p className="journey-detail-name">{JourInfo.journeyName}</p>
+          <p className="journey-detail-name">{JourInfo.journeyName}{IsScrap ? <ScrapBtn onClick={onClickSetScrap}/> : <UnscrapBtn onClick={onClickSetScrap}/>}</p>
           <p className="journey-detail-username">Created by {JourInfo.userName}</p>
         </div>
         <div className="journey-detail-container">

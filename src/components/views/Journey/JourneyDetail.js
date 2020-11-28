@@ -13,13 +13,11 @@ function JourneyDetail(props) {
 
   const { id } = useParams();
   const [JourInfo, setJourInfo] = useState({});
-  const [HeaderImg, setHeaderImg] = useState("");
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(journeyDetail(id)).then((response) => {
       setJourInfo(response.payload);
     });
-    //setHeaderImg(process.env.REACT_APP_IMAGE_URL + JourInfo.image);
   }, []);
 
 
@@ -132,7 +130,9 @@ function JourneyDetail(props) {
         <div className="journey-detail-container">
           <div className="journey-detail-catergory common-grey-box ">
             <p>
-              <span style={{fontWeight: "bold"}}>Category: </span>
+              <span style={{fontWeight: "bold"}}>With: </span>
+              <span className="common-category-badge purple">{JourInfo.accompany}</span>
+              <span style={{fontWeight: "bold", marginLeft: "20px"}}>Category: </span>
               <span className="common-category-badge yellow">{JourInfo.type}</span>
             </p>
           </div>

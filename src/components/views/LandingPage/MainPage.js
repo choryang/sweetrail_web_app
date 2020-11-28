@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import {useDispatch, useSelector} from "react-redux";
-import { Link } from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import {FaSearch} from "react-icons/fa"
 import { journeyMain } from "_actions/journey_action";
-import { getUserInfo } from "_actions/user_action";
 import MainHeader from "components/views/Header/MainHeader";
-import JourneyThumb from "components/views/Journey/JourneyThumb"
-import example from "images/mainboat.png"
-import example2 from "images/mainbeach.jpg"
+import JourneyThumb from "components/views/Journey/JourneyThumb";
+import MainThumb from "components/views/Journey/MainThumb"
 
-function MainPage() {
+function MainPage(props) {
   const [PublicJour, setPublicJour] = useState([]);
   const dispatch = useDispatch();
   const userId = useSelector(state => state.user.userId);
@@ -17,7 +15,6 @@ function MainPage() {
 
   
   useEffect(() => {
-    //dispatch(getUserInfo(userId));
     dispatch(journeyMain()).then((response) => {
       setPublicJour(response.payload);
     });
@@ -39,12 +36,11 @@ function MainPage() {
     <div className="main-container">
       <div className="common-catergory">JOURNEY FOR YOU</div>
       <div className="main-journey">
-        <div className="main-journey item">
-          <img src={example} alt="example"/>
-        </div>
-        <div className="main-journey item">
-          <img src={example2} alt="example"/>
-        </div>
+        {PublicJour.map((journey, index) => {
+          return (
+            <MainThumb id={journey.id} name={journey.journeyName} type={journey.type} accompany={journey.accompany} author={journey.userName} authorId = {journey.userId} img={journey.image} key={index}/>
+          );
+        })}
       </div>
     </div>
     <div className="main-container">
@@ -61,4 +57,4 @@ function MainPage() {
   );
 }
 
-export default MainPage;
+export default withRouter(MainPage);

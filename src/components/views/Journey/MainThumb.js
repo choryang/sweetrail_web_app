@@ -4,7 +4,7 @@ import {withRouter} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import { setMypageUserId } from "_actions/user_action";
 
-function JourneyThumb(props) {
+function MainThumb(props) {
 
   const dispatch = useDispatch();
   const UserInfo = useSelector(state => state.user);
@@ -22,10 +22,11 @@ function JourneyThumb(props) {
   }
   
   return (
-    <div className="common-journey-item">
-      <img src={journeyImg} alt="journey" onClick={onClick}/>
+    <div className="main-journey item">
+      <img src={journeyImg} alt="journey"/>
+      <div className="overlay" onClick={onClick}></div>
       <span className="common-category-badge yellow">{props.type}</span>
-      <div className="journey-info">
+      <div className="main-journey-info">
         <p className="journey-info-title" onClick={onClick}>{props.name}</p>
         <div className="journey-info-others">
           <p className="journey-info-grey">created by </p>
@@ -37,4 +38,4 @@ function JourneyThumb(props) {
   
 }
 
-export default withRouter(JourneyThumb);
+export default withRouter(MainThumb);

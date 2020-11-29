@@ -22,14 +22,14 @@ function ProfileEdit(props) {
   const [LifeStyle, setLifeStyle] = useState(UserInfo.lifeStyle);
 
   const [File, setFile] = useState(null);
-  const [Default, setDefault] = useState(false);
+  const [Default, setDefault] = useState("false");
   const [ImgUrl, setImgUrl] = useState("default");
   const [EditImageVisible, setEditImageVisible] = useState(false);
   const [ProfileImg, setProfileImg] = useState(process.env.REACT_APP_IMAGE_URL + UserInfo.userImg);
 
   const defaultImage = () => {
     setDefault("true");
-    setProfileImg(process.env.REACT_APP_IMAGE_URL + `image/profile/default.png`);
+    setProfileImg(process.env.REACT_APP_IMAGE_URL + `/image/profile/default.png`);
     setEditImageVisible(false);
   }
 

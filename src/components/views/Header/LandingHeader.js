@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "css/index.scss";
-import logo from "images/logo.png";
+import logo from "images/logo2.png";
 
 function LandingHeader() {
   const location = useLocation();
